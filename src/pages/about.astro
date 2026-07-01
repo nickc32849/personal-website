@@ -1,0 +1,167 @@
+---
+// THE ABOUT PAGE — served at "/about" (file name = route).
+
+import Base from "../layouts/Base.astro";
+
+// Swap your real portrait here (same idea as the Home page).
+const portraitImage = "/portrait-placeholder.svg";
+
+// Quick facts shown next to your bio. Edit the text freely.
+const quickFacts = [
+  { label: "School", value: "Northeastern University" },
+  { label: "Major", value: "BS Electrical Engineering" },
+  { label: "Minors", value: "Mechanical Engineering · Business Administration" },
+  { label: "Class of", value: "2029" },
+];
+
+// SKILLS — grouped into categories. Add/remove groups or items freely;
+// the page loops over whatever is here. (These are placeholders.)
+const skillGroups = [
+  { name: "Hardware", items: ["Circuit design", "PCB layout", "Soldering", "Oscilloscope"] },
+  { name: "Software", items: ["Python", "C", "MATLAB"] },
+  { name: "Tools", items: ["Git", "KiCad", "SolidWorks"] },
+];
+---
+
+<Base title="About — Nick Carpenter">
+  <!-- ===== Bio + portrait + quick facts ===== -->
+  <section class="section">
+    <div class="container about-header">
+      <img class="about-photo" src={portraitImage} alt="Nick Carpenter" />
+
+      <div class="about-text">
+        <h1 class="page-title">About</h1>
+
+        <!-- Seeded from the details you gave me — edit to make it yours. -->
+        <p>
+          I'm a third-year Electrical Engineering student at Northeastern
+          University, pursuing minors in Mechanical Engineering and Business
+          Administration. I'm drawn to the hard problems in energy, space,
+          lasers, and EVs — and to building things people can depend on.
+        </p>
+        <p>
+          [Placeholder — add a paragraph about your background: what got you
+          into engineering, projects or experiences that shaped you, and what
+          you're looking for in a co-op.]
+        </p>
+
+        <ul class="facts">
+          {
+            quickFacts.map((fact) => (
+              <li>
+                <span class="fact-label">{fact.label}</span>
+                <span class="fact-value">{fact.value}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section class="section skills-section">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        {
+          skillGroups.map((group) => (
+            <div class="skill-group">
+              <h3 class="skill-group-name">{group.name}</h3>
+              <ul class="skill-pills">
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ----- Bio header ----- */
+  .about-header {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* portrait left, text right */
+    gap: 3rem;
+    align-items: start;
+  }
+  .about-photo {
+    width: 100%;
+    border-radius: var(--radius);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .page-title {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .about-text p {
+    font-size: 1.1rem;
+    max-width: 60ch;
+    margin-bottom: 1rem;
+  }
+
+  /* Quick facts list */
+  .facts {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .facts li {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .fact-label {
+    min-width: 90px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+  .fact-value {
+    font-size: 0.95rem;
+  }
+
+  /* Stack on narrow screens */
+  @media (max-width: 720px) {
+    .about-header {
+      grid-template-columns: 1fr;
+    }
+    .about-photo {
+      max-width: 280px;
+    }
+  }
+
+  /* ----- Skills ----- */
+  .skills-section {
+    border-top: 1px solid var(--color-border);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .skill-group-name {
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .skill-pills {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .skill-pills li {
+    font-size: 0.85rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+  }
+</style>
