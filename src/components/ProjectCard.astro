@@ -1,0 +1,73 @@
+---
+// A single clickable project card. It receives one `project` object as a
+// "prop" and links to that project's detail page. Written once here, reused
+// on both the Home page (featured) and the Projects page.
+const { project } = Astro.props;
+---
+
+<a class="project-card" href={`/projects/${project.slug}`}>
+  <div class="project-thumb">Project image</div>
+  <div class="project-body">
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-blurb">{project.blurb}</p>
+    {
+      project.tags && (
+        <ul class="project-tags">
+          {project.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      )
+    }
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+  .project-thumb {
+    aspect-ratio: 16 / 10;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    place-items: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  .project-body {
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+  .project-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .project-blurb {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+  }
+  .project-tags {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-tags li {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+  }
+</style>

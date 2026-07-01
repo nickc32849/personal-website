@@ -1,0 +1,44 @@
+---
+// THE PROJECTS PAGE. Because this file is at src/pages/projects/index.astro,
+// Astro serves it at "/projects". It lists ALL projects from the data file.
+
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects } from "../../data/projects.js";
+// (Two dots twice — "../../" — because this file is two folders deep inside
+//  src/pages/projects/, so we climb back up to src/ to reach data & components.)
+---
+
+<Base title="Projects — Nick Carpenter">
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-intro">
+        [Placeholder — a sentence or two introducing the kind of work you do
+        and what these projects show.]
+      </p>
+
+      <div class="project-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-title {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+  }
+  .page-intro {
+    color: var(--color-muted);
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 55ch;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

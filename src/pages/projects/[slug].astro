@@ -1,0 +1,89 @@
+---
+// A PROJECT DETAIL PAGE — but written only ONCE as a template.
+// The square brackets in the filename, [slug], make this a "dynamic route":
+// Astro fills [slug] with a real value (like "project-one") for each page.
+
+import Base from "../../layouts/Base.astro";
+import { projects } from "../../data/projects.js";
+
+// getStaticPaths() tells Astro exactly which pages to generate from this
+// template — one per project. It runs at build time. For each project we
+// return its `slug` (which fills the [slug] in the URL) and pass the whole
+// project object in as a prop so the page below can display it.
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Base title={`${project.title} — Nick Carpenter`}>
+  <section class="section">
+    <div class="container project-detail">
+      <a class="back-link" href="/projects">← Back to Projects</a>
+
+      <h1 class="detail-title">{project.title}</h1>
+      {
+        project.tags && (
+          <ul class="project-tags">
+            {project.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+        )
+      }
+
+      <div class="detail-thumb">Project image</div>
+
+      <p class="detail-description">{project.description}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .project-detail {
+    max-width: 760px; /* narrower column keeps long text readable */
+  }
+  .back-link {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  .back-link:hover {
+    color: var(--color-text);
+  }
+  .detail-title {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+    margin-top: 1rem;
+  }
+  .project-tags {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-tags li {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+  }
+  .detail-thumb {
+    aspect-ratio: 16 / 9;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    display: grid;
+    place-items: center;
+    color: var(--color-muted);
+    margin-block: 2rem;
+  }
+  .detail-description {
+    font-size: 1.1rem;
+  }
+</style>

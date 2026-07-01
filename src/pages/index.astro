@@ -2,6 +2,8 @@
 // THE HOME PAGE.  Named index.astro inside src/pages/, so Astro serves it at "/".
 
 import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects.js";
 
 // =====================================================================
 //  IMAGE PLACEHOLDERS — the two spots to swap your real photos.
@@ -13,12 +15,8 @@ import Base from "../layouts/Base.astro";
 const heroImage = "/hero-placeholder.svg"; // #1 — full-screen background photo
 const portraitImage = "/portrait-placeholder.svg"; // #2 — photo in the intro section
 
-// Placeholder data for the Featured Projects cards.
-const featuredProjects = [
-  { title: "Project One", blurb: "Short description placeholder.", href: "#" },
-  { title: "Project Two", blurb: "Short description placeholder.", href: "#" },
-  { title: "Project Three", blurb: "Short description placeholder.", href: "#" },
-];
+// Show only the projects marked `featured: true` in src/data/projects.js
+const featuredProjects = projects.filter((project) => project.featured);
 ---
 
 <Base title="Nick Carpenter — Electrical Engineering">
@@ -61,17 +59,7 @@ const featuredProjects = [
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
       <div class="project-grid">
-        {
-          featuredProjects.map((project) => (
-            <a class="project-card" href={project.href}>
-              <div class="project-thumb">Project image</div>
-              <div class="project-body">
-                <h3 class="project-title">{project.title}</h3>
-                <p class="project-blurb">{project.blurb}</p>
-              </div>
-            </a>
-          ))
-        }
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>
@@ -157,42 +145,10 @@ const featuredProjects = [
     flex-wrap: wrap;
   }
 
-  /* ----- Featured projects grid ----- */
+  /* ----- Featured projects grid (card styles live in ProjectCard.astro) ----- */
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.5rem;
-  }
-  .project-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: #fff;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-  }
-  .project-thumb {
-    aspect-ratio: 16 / 10;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    display: grid;
-    place-items: center;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-  }
-  .project-body {
-    padding: 1.1rem 1.2rem 1.3rem;
-  }
-  .project-title {
-    font-size: 1.1rem;
-    letter-spacing: -0.01em;
-  }
-  .project-blurb {
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    margin-top: 0.3rem;
   }
 </style>
