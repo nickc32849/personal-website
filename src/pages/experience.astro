@@ -1,0 +1,107 @@
+---
+// THE EXPERIENCE PAGE — served at "/experience". Renders the entries from
+// src/data/experience.js as a vertical timeline.
+
+import Base from "../layouts/Base.astro";
+import { experiences } from "../data/experience.js";
+---
+
+<Base title="Experience — Nick Carpenter">
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">Experience</h1>
+      <p class="page-intro">
+        [Placeholder — a sentence about the kind of roles you've held or are
+        seeking.]
+      </p>
+
+      <div class="timeline">
+        {
+          experiences.map((exp) => (
+            <div class="timeline-item">
+              <p class="timeline-dates">{exp.dates}</p>
+              <h3 class="timeline-role">{exp.role}</h3>
+              <p class="timeline-org">
+                {exp.organization}
+                {exp.location && ` · ${exp.location}`}
+              </p>
+              <ul class="timeline-bullets">
+                {exp.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-title {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+  }
+  .page-intro {
+    color: var(--color-muted);
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+    max-width: 55ch;
+  }
+
+  /* The vertical line is the left border of this container. */
+  .timeline {
+    border-left: 2px solid var(--color-border);
+    margin-left: 0.5rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2.75rem;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  /* The dot on the line, one per entry. */
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -8px; /* pull it onto the 2px line */
+    top: 0.4rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg); /* white ring so it "sits on" the line */
+  }
+
+  .timeline-dates {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .timeline-role {
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    margin-top: 0.15rem;
+  }
+  .timeline-org {
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    margin-top: 0.1rem;
+  }
+  .timeline-bullets {
+    margin-top: 0.75rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .timeline-bullets li {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+</style>
