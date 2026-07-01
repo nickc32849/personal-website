@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="nav">
-  <div class="container nav-inner">
+  <div class="nav-inner">
     <a href="/" class="nav-brand">Nick Carpenter</a>
     <nav>
       <ul class="nav-links">
@@ -52,6 +52,9 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     height: 64px;
+    /* Full-width row: no max-width, just edge padding so the brand and links
+       sit near the left/right corners of the page. */
+    padding-inline: 1.5rem;
   }
   .nav-brand {
     font-weight: 600;
