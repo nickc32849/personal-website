@@ -1,0 +1,196 @@
+---
+// THE HOME PAGE.  Named index.astro inside src/pages/, so Astro serves it at "/".
+
+import Base from "../layouts/Base.astro";
+
+// =====================================================================
+//  IMAGE PLACEHOLDERS — the two spots to swap your real photos.
+//  Files live in the /public folder. To use your own photo:
+//    1. Drop your image into the /public folder (e.g. public/hero.jpg)
+//    2. Change the path below to match (e.g. "/hero.jpg")
+//  (Paths start with "/" which means "the public folder".)
+// =====================================================================
+const heroImage = "/hero-placeholder.svg"; // #1 — full-screen background photo
+const portraitImage = "/portrait-placeholder.svg"; // #2 — photo in the intro section
+
+// Placeholder data for the Featured Projects cards.
+const featuredProjects = [
+  { title: "Project One", blurb: "Short description placeholder.", href: "#" },
+  { title: "Project Two", blurb: "Short description placeholder.", href: "#" },
+  { title: "Project Three", blurb: "Short description placeholder.", href: "#" },
+];
+---
+
+<Base title="Nick Carpenter — Electrical Engineering">
+  <!-- ===== 1. HERO — full-screen background photo + overlaid name ===== -->
+  <section class="hero" style={`background-image: url('${heroImage}')`}>
+    <div class="container hero-content">
+      <h1 class="hero-name">Nick Carpenter</h1>
+      <p class="hero-line">Electrical Engineering @ Northeastern</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. INTRO — paragraph beside a portrait photo ===== -->
+  <section id="intro" class="section">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <h2 class="section-title">About</h2>
+        <p class="intro">
+          [Placeholder intro — a short paragraph about who you are, what you're
+          studying, and what kind of co-op or work you're looking for. We'll
+          write this together.]
+        </p>
+      </div>
+      <img class="intro-photo" src={portraitImage} alt="Nick Carpenter" />
+    </div>
+  </section>
+
+  <!-- ===== 3. BUTTON ROW ===== -->
+  <section class="button-section">
+    <div class="container">
+      <div class="button-row">
+        <a class="btn btn-primary" href="/experience">Experience</a>
+        <a class="btn" href="/projects">Projects</a>
+        <a class="btn" href="/resume">Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. FEATURED PROJECTS (unchanged) ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+        {
+          featuredProjects.map((project) => (
+            <a class="project-card" href={project.href}>
+              <div class="project-thumb">Project image</div>
+              <div class="project-body">
+                <h3 class="project-title">{project.title}</h3>
+                <p class="project-blurb">{project.blurb}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ----- Hero ----- */
+  .hero {
+    position: relative; /* lets the dark overlay position itself over the photo */
+    min-height: calc(100vh - 64px); /* fill the screen below the 64px nav */
+    display: flex;
+    align-items: flex-end; /* text sits toward the bottom */
+    padding-block: 4rem;
+    background-size: cover; /* photo fills the area, cropping as needed */
+    background-position: center;
+    overflow: hidden;
+  }
+  /* The subtle dark overlay: a full-cover layer between photo and text so
+     light text stays readable no matter what the photo looks like. */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.55)
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1; /* sit ABOVE the ::after overlay */
+    color: #fff;
+  }
+  .hero-name {
+    font-size: clamp(2.75rem, 7vw, 4.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.03;
+    color: #fff;
+  }
+  .hero-line {
+    margin-top: 0.75rem;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* ----- Intro (text + portrait side by side) ----- */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr; /* text a bit wider than the photo */
+    gap: 3rem;
+    align-items: center;
+  }
+  .intro {
+    font-size: 1.15rem;
+    max-width: 55ch;
+  }
+  .intro-photo {
+    width: 100%;
+    border-radius: var(--radius);
+    aspect-ratio: 4 / 5; /* portrait shape */
+    object-fit: cover; /* crop to fill without distortion */
+  }
+  /* Stack them vertically on narrow screens */
+  @media (max-width: 720px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+    .intro-photo {
+      max-width: 320px;
+    }
+  }
+
+  /* ----- Button row (its own band, no big top gap after intro) ----- */
+  .button-section {
+    padding-bottom: 2rem;
+  }
+  .button-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ----- Featured projects grid ----- */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  }
+  .project-thumb {
+    aspect-ratio: 16 / 10;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    place-items: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+  .project-body {
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+  .project-title {
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .project-blurb {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+  }
+</style>

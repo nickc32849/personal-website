@@ -1,0 +1,45 @@
+---
+// This is the shared "shell" wrapped around every page: the <head>, the nav,
+// the footer. A page wraps its content in <Base>...</Base> and that content
+// gets dropped into the <slot /> below.
+
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+
+// "Props" are values a page passes in. Here a page can set its own <title>.
+// The `= "Nick Carpenter"` part is a default if none is given.
+const { title = "Nick Carpenter" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Nav />
+
+    <main>
+      <slot />
+      <!-- ^ Whatever a page puts inside <Base>...</Base> renders right here -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          © 2026 Nick Carpenter ·
+          <a href="mailto:carpenter.ni@northeastern.edu">carpenter.ni@northeastern.edu</a> ·
+          <a
+            href="https://www.linkedin.com/in/nicholas-carpenter-083649326"
+            target="_blank"
+            rel="noopener">LinkedIn</a
+          >
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
