@@ -100,6 +100,21 @@ export const projects = [
       "I2C LCD",
       "IR break-beam sensors",
     ],
+    images: [
+      {
+        src: "/projects/ir-sensor-puzzle-controller/Final_Product.png",
+        caption: "The finished escape-room puzzle controller",
+      },
+      {
+        src: "/projects/ir-sensor-puzzle-controller/breadboard3.jpg",
+        caption:
+          "The Raspberry Pi Pico wired to the IR sensors, LCD, and pushbutton",
+      },
+      {
+        src: "/projects/ir-sensor-puzzle-controller/sensor_test.png",
+        caption: "Testing the IR break-beam sensors",
+      },
+    ],
     description: [
       "The IR-Sensor Puzzle Controller is the complete electronics system for an interactive escape-room puzzle, built for Cornerstone of Engineering 2.",
       "I wired a Raspberry Pi Pico to eight IR break-beam sensors, an I2C LCD, and a pushbutton across shared power and ground rails with pull-up resistors.",
