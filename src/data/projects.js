@@ -131,6 +131,20 @@ export const projects = [
     featured: false,
     status: "Completed for Cornerstone of Engineering 1 (Sep to Dec 2025).",
     tools: ["Raspberry Pi Pico", "MicroPython", "Servo motors", "LCD"],
+    images: [
+      {
+        src: "/projects/whack-a-mole/final-game.png",
+        caption: "The finished Whack-a-Mole arcade game",
+      },
+      {
+        src: "/projects/whack-a-mole/breadboard-v1.jpg",
+        caption: "First breadboard prototype of the control circuit",
+      },
+      {
+        src: "/projects/whack-a-mole/breadboard-v2.jpg",
+        caption: "Revised breadboard build after the power fix",
+      },
+    ],
     description: [
       "The Whack-a-Mole Electromechanical Game is an interactive arcade game that integrates five servo motors, physical input buttons, and an LCD for real-time scoring, all controlled by a Raspberry Pi Pico running MicroPython. I built it for Cornerstone of Engineering 1.",
       "The most interesting engineering challenge was reliability. I diagnosed a system-level power instability that was causing voltage dropouts, and I resolved it by implementing a dual-battery power architecture that eliminated the failures and made the game consistently playable.",
