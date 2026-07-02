@@ -1,15 +1,10 @@
 ---
-// A PROJECT DETAIL PAGE — but written only ONCE as a template.
-// The square brackets in the filename, [slug], make this a "dynamic route":
-// Astro fills [slug] with a real value (like "project-one") for each page.
+// A PROJECT DETAIL PAGE — written once as a template. The [slug] in the
+// filename makes this a "dynamic route": Astro generates one page per project.
 
 import Base from "../../layouts/Base.astro";
 import { projects } from "../../data/projects.js";
 
-// getStaticPaths() tells Astro exactly which pages to generate from this
-// template — one per project. It runs at build time. For each project we
-// return its `slug` (which fills the [slug] in the URL) and pass the whole
-// project object in as a prop so the page below can display it.
 export function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -18,6 +13,12 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+// `description` may be a single string or an array of paragraphs. Normalize to
+// an array here so the template can just loop over it either way.
+const paragraphs = Array.isArray(project.description)
+  ? project.description
+  : [project.description];
 ---
 
 <Base title={`${project.title} — Nick Carpenter`}>
@@ -26,17 +27,34 @@ const { project } = Astro.props;
       <a class="back-link" href="/projects">← Back to Projects</a>
 
       <h1 class="detail-title">{project.title}</h1>
+
+      {project.status && <p class="detail-status">{project.status}</p>}
+
       {
-        project.tags && (
+        project.tags && project.tags.length > 0 && (
           <ul class="project-tags">
             {project.tags.map((tag) => <li>{tag}</li>)}
           </ul>
         )
       }
 
-      <div class="detail-thumb">Project image</div>
+      <!-- Image spot: replace with real project images later. -->
+      <div class="detail-thumb">Project images coming soon</div>
 
-      <p class="detail-description">{project.description}</p>
+      <div class="detail-body">
+        {paragraphs.map((para) => <p>{para}</p>)}
+      </div>
+
+      {
+        project.tools && project.tools.length > 0 && (
+          <div class="detail-tools">
+            <h2 class="tools-title">Tools</h2>
+            <ul class="tool-pills">
+              {project.tools.map((tool) => <li>{tool}</li>)}
+            </ul>
+          </div>
+        )
+      }
     </div>
   </section>
 </Base>
@@ -57,6 +75,14 @@ const { project } = Astro.props;
     letter-spacing: -0.02em;
     margin-top: 1rem;
   }
+  .detail-status {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
   .project-tags {
     list-style: none;
     padding: 0;
@@ -73,6 +99,7 @@ const { project } = Astro.props;
     border-radius: 999px;
     padding: 0.15rem 0.6rem;
   }
+
   .detail-thumb {
     aspect-ratio: 16 / 9;
     background: var(--color-surface);
@@ -83,7 +110,37 @@ const { project } = Astro.props;
     color: var(--color-muted);
     margin-block: 2rem;
   }
-  .detail-description {
+
+  .detail-body p {
     font-size: 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .detail-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ----- Tools ----- */
+  .detail-tools {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .tools-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.9rem;
+  }
+  .tool-pills {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tool-pills li {
+    font-size: 0.85rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
   }
 </style>
