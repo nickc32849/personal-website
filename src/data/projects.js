@@ -16,6 +16,7 @@
 //                  strings where each becomes its own paragraph.
 //    tools       - (optional) list of tools/instruments, shown on the detail page
 //    status      - (optional) short status line, shown on the detail page
+//    images      - (optional) gallery: array of { src, caption } objects
 // =====================================================================
 export const projects = [
   {
@@ -27,6 +28,24 @@ export const projects = [
     featured: true,
     status: "Prototype built and validated; custom PCB layout in progress.",
     tools: ["Altium Designer", "LTspice", "Oscilloscope", "Multimeter"],
+    images: [
+      {
+        src: "/projects/dc-power-analyzer/DC_Power_Analyzer_Breadboard_Prototype.png",
+        caption: "Breadboard prototype on the bench",
+      },
+      {
+        src: "/projects/dc-power-analyzer/DC_Power_Analyzer_Display.png",
+        caption: "Live voltage, current, and power readout on the OLED",
+      },
+      {
+        src: "/projects/dc-power-analyzer/DC_Power_Analyzer_Oscope.png",
+        caption: "Oscilloscope validation of the signal chain",
+      },
+      {
+        src: "/projects/dc-power-analyzer/rc_lowpass_bode.png",
+        caption: "LTspice frequency response of the filter",
+      },
+    ],
     description: [
       "The DC Power Analyzer is a precision measurement system I designed to accurately profile the voltage, current, and power draw of DC devices. It is the kind of instrument you reach for when you need to characterize exactly how much a circuit is consuming.",
       "At its core is a custom current-sense amplifier stage built around the INA180, feeding a Sallen-Key anti-aliasing filter that conditions the signal before digitization. I simulated the full signal chain in LTspice to verify the amplifier and filter response, then validated the real hardware on the oscilloscope against those predictions.",
