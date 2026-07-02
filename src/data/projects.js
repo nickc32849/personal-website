@@ -154,16 +154,33 @@ export const projects = [
     slug: "sustainafill",
     title: "SustainaFill",
     blurb:
-      "A venture concept to boost campus water refill station usage and cut single-use plastic waste.",
-    tags: ["Entrepreneurship", "Product", "Business"],
+      "A venture I pitched to connect students with campus water refill stations, cutting single-use plastic waste.",
+    tags: ["Entrepreneurship", "Product", "Business Strategy"],
     featured: true,
-    status: "2nd place, Husky Startup Challenge (Dec 2024).",
-    tools: ["Pitch deck", "Market research", "Business modeling"],
+    status: "2nd place, Husky Startup Challenge (2024).",
+    tools: ["Pitch deck", "Market research", "Financial modeling"],
+    images: [
+      {
+        src: "/projects/sustainafill/SustainaFill-Slide-1.png",
+        caption: "SustainaFill title and concept",
+      },
+      {
+        src: "/projects/sustainafill/SustainaFill-Slide-3.png",
+        caption: "The mobile app concept and key features",
+      },
+      {
+        src: "/projects/sustainafill/SustainaFill-Slide-9.png",
+        caption: "Five-year profitability projection",
+      },
+      {
+        src: "/projects/sustainafill/SustainaFill-Slide-2.png",
+        caption: "The problem: campus refill station awareness",
+      },
+    ],
     description: [
-      "SustainaFill is a venture concept I pitched to increase campus water refill station usage and cut single-use plastic waste.",
-      "I developed the product concept: a mobile app with real-time GPS station mapping, hydration reminders, and student ID integration that would give universities data-driven insights for infrastructure decisions.",
-      "I built the business model around tiered university licensing, sponsorships, and data analytics revenue. Market research I conducted found that 91% of surveyed students would switch to reusable bottles if refill stations were conveniently located.",
-      "I delivered the pitch on demo day and placed 2nd in the competition. This project reflects my interest in the intersection of engineering and entrepreneurship, and my longer-term goal of building a company with a positive impact.",
+      "SustainaFill is a venture I pitched to close the gap between campus water refill stations and student awareness, cutting single-use plastic waste while saving students money. The concept is a mobile app with real-time GPS station mapping, hydration and nearby-station notifications, and student ID integration that gives universities data-driven insight into station usage and placement.",
+      "I built the full business case around it: a tiered university licensing model ($5,000 to $15,000 per year by school size), sponsored eco-brand partnerships, and anonymized data-insight reports. I developed a five-year profitability projection showing a path from an initial investment year to roughly $1.5 million in net profit by year five at 250 university partners. My market research found that 91% of students would switch to reusable bottles if refill stations were conveniently located, and I built a customer persona and competitive analysis positioning SustainaFill against existing apps through its campus-specific focus, indoor navigation, and administrator analytics.",
+      "I delivered the pitch on demo day and placed 2nd. Judges highlighted the strength of the app design, the clarity of the customer profile, and the revenue model. This project reflects my interest in the intersection of engineering and entrepreneurship, and my longer-term goal of building a company with a positive impact.",
     ],
   },
 ];
