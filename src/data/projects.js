@@ -62,6 +62,24 @@ export const projects = [
     featured: true,
     status: "Completed as part of the Forge Hardware Product Lab (Jan to Jun 2026).",
     tools: ["KiCad", "Arduino", "Multimeter"],
+    images: [
+      {
+        src: "/projects/boxy/Boxy.png",
+        caption: "The finished assistive communication caddy",
+      },
+      {
+        src: "/projects/boxy/EM_Lock_Schematic.png",
+        caption: "KiCad schematic for the electromagnetic lock relay driver",
+      },
+      {
+        src: "/projects/boxy/EM_Lock_Circuit.png",
+        caption: "The electromagnetic lock driver circuit",
+      },
+      {
+        src: "/projects/boxy/6V_Battery.png",
+        caption: "The 2x2 AA battery pack, about 6.67V",
+      },
+    ],
     description: [
       "Boxy is an Assistive Communication Caddy, a team-built classroom device for nonverbal students that my team developed start to finish in Northeastern's Forge Hardware Product Lab.",
       "I owned the electromagnetic lock subsystem. I designed a 5V relay driver in KiCad and wrote non-blocking Arduino control firmware so the lock could operate without stalling the rest of the system.",
