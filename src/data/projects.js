@@ -124,11 +124,17 @@ export const projects = [
   },
   {
     slug: "whack-a-mole",
-    title: "Whack-a-Mole",
-    blurb: "[One line describing what it does.]",
-    tags: [],
+    title: "Whack-a-Mole Electromechanical Game",
+    blurb:
+      "An interactive arcade game with servo-driven moles, physical buttons, and live LCD scoring.",
+    tags: ["Electromechanical", "Embedded", "MicroPython", "Power"],
     featured: false,
-    description: "[Placeholder — what it is, what you built, and the result.]",
+    status: "Completed for Cornerstone of Engineering 1 (Sep to Dec 2025).",
+    tools: ["Raspberry Pi Pico", "MicroPython", "Servo motors", "LCD"],
+    description: [
+      "The Whack-a-Mole Electromechanical Game is an interactive arcade game that integrates five servo motors, physical input buttons, and an LCD for real-time scoring, all controlled by a Raspberry Pi Pico running MicroPython. I built it for Cornerstone of Engineering 1.",
+      "The most interesting engineering challenge was reliability. I diagnosed a system-level power instability that was causing voltage dropouts, and I resolved it by implementing a dual-battery power architecture that eliminated the failures and made the game consistently playable.",
+    ],
   },
   {
     slug: "sustainafill",
