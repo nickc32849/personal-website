@@ -89,10 +89,23 @@ export const projects = [
   {
     slug: "ir-sensor-puzzle-controller",
     title: "IR-Sensor Puzzle Controller",
-    blurb: "[One line describing what it does.]",
-    tags: [],
+    blurb:
+      "The complete electronics system for an interactive escape-room puzzle.",
+    tags: ["Embedded", "Firmware", "Sensors", "MicroPython"],
     featured: false,
-    description: "[Placeholder — what it is, what you built, and the result.]",
+    status: "Completed for Cornerstone of Engineering 2 (Jan to Jun 2026).",
+    tools: [
+      "Raspberry Pi Pico",
+      "MicroPython",
+      "I2C LCD",
+      "IR break-beam sensors",
+    ],
+    description: [
+      "The IR-Sensor Puzzle Controller is the complete electronics system for an interactive escape-room puzzle, built for Cornerstone of Engineering 2.",
+      "I wired a Raspberry Pi Pico to eight IR break-beam sensors, an I2C LCD, and a pushbutton across shared power and ground rails with pull-up resistors.",
+      "I then wrote MicroPython firmware from scratch for sensor polling, hold-to-check button debouncing, and a state-based LCD interface.",
+      "I refined the input logic and display loop through iterative playtesting to eliminate false triggers and screen flicker.",
+    ],
   },
   {
     slug: "whack-a-mole",
