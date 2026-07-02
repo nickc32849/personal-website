@@ -56,11 +56,17 @@ export const projects = [
   {
     slug: "boxy",
     title: "Boxy",
-    blurb: "[One line describing what it does.]",
-    tags: ["Forge"],
+    blurb:
+      "A team-built assistive classroom device for nonverbal students, developed in Northeastern's Forge Hardware Product Lab.",
+    tags: ["Hardware", "KiCad", "Arduino", "Power"],
     featured: true,
-    description:
-      "[Placeholder — what Boxy is, your role on the Forge project, and the outcome.]",
+    status: "Completed as part of the Forge Hardware Product Lab (Jan to Jun 2026).",
+    tools: ["KiCad", "Arduino", "Multimeter"],
+    description: [
+      "Boxy is an Assistive Communication Caddy, a team-built classroom device for nonverbal students that my team developed start to finish in Northeastern's Forge Hardware Product Lab.",
+      "I owned the electromagnetic lock subsystem. I designed a 5V relay driver in KiCad and wrote non-blocking Arduino control firmware so the lock could operate without stalling the rest of the system.",
+      "I also built and verified the project's 2x2 AA battery pack, which supplies about 6.67V, and measured per-component current draw with a multimeter to size the team's shared power budget.",
+    ],
   },
   {
     slug: "ir-sensor-puzzle-controller",
