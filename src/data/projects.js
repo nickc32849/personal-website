@@ -153,10 +153,17 @@ export const projects = [
   {
     slug: "sustainafill",
     title: "SustainaFill",
-    blurb: "[One line describing what it does.]",
-    tags: ["Husky Startup Challenge · 2nd place"],
+    blurb:
+      "A venture concept to boost campus water refill station usage and cut single-use plastic waste.",
+    tags: ["Entrepreneurship", "Product", "Business"],
     featured: true,
-    description:
-      "[Placeholder — the startup concept, your role, and the 2nd-place finish at the Husky Startup Challenge.]",
+    status: "2nd place, Husky Startup Challenge (Dec 2024).",
+    tools: ["Pitch deck", "Market research", "Business modeling"],
+    description: [
+      "SustainaFill is a venture concept I pitched to increase campus water refill station usage and cut single-use plastic waste.",
+      "I developed the product concept: a mobile app with real-time GPS station mapping, hydration reminders, and student ID integration that would give universities data-driven insights for infrastructure decisions.",
+      "I built the business model around tiered university licensing, sponsorships, and data analytics revenue. Market research I conducted found that 91% of surveyed students would switch to reusable bottles if refill stations were conveniently located.",
+      "I delivered the pitch on demo day and placed 2nd in the competition. This project reflects my interest in the intersection of engineering and entrepreneurship, and my longer-term goal of building a company with a positive impact.",
+    ],
   },
 ];
