@@ -92,7 +92,7 @@ export const projects = [
     blurb:
       "The complete electronics system for an interactive escape-room puzzle.",
     tags: ["Embedded", "Firmware", "Sensors", "MicroPython"],
-    featured: false,
+    featured: true,
     status: "Completed for Cornerstone of Engineering 2 (Jan to Jun 2026).",
     tools: [
       "Raspberry Pi Pico",
@@ -156,7 +156,7 @@ export const projects = [
     blurb:
       "A venture I pitched to connect students with campus water refill stations, cutting single-use plastic waste.",
     tags: ["Entrepreneurship", "Product", "Business Strategy"],
-    featured: true,
+    featured: false,
     status: "2nd place, Husky Startup Challenge (2024).",
     tools: ["Pitch deck", "Market research", "Financial modeling"],
     images: [
