@@ -25,7 +25,7 @@ export const projects = [
   {
     slug: "dc-power-analyzer",
     thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
-    thumbnailPosition: "center 80%",
+    thumbnailPosition: "center 40%",
     title: "DC Power Analyzer",
     blurb:
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
@@ -96,7 +96,7 @@ export const projects = [
   {
     slug: "ir-sensor-puzzle-controller",
     thumbnail: "/projects/ir-sensor-puzzle-controller/thumb.jpg",
-    thumbnailPosition: "center 80%",
+    thumbnailPosition: "center 30%",
     title: "IR-Sensor Puzzle Controller",
     blurb:
       "The complete electronics system for an interactive escape-room puzzle.",
