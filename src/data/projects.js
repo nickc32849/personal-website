@@ -11,6 +11,8 @@
 //    title       - project name
 //    blurb       - one short line shown on the card
 //    thumbnail   - (optional) card image path; falls back to a placeholder
+//    thumbnailPosition - (optional) object-position focal point for the card
+//                  image, e.g. "center 80%" (bias toward bottom of the photo)
 //    tags        - small labels (skills/tools); shown as pills on the card
 //    featured    - true = also show it on the Home page
 //    description - the detail-page text. Can be ONE string, OR an array of
@@ -23,6 +25,7 @@ export const projects = [
   {
     slug: "dc-power-analyzer",
     thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
+    thumbnailPosition: "center 80%",
     title: "DC Power Analyzer",
     blurb:
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
@@ -58,6 +61,7 @@ export const projects = [
   {
     slug: "boxy",
     thumbnail: "/projects/boxy/thumb.jpg",
+    thumbnailPosition: "center 30%",
     title: "Boxy",
     blurb:
       "A team-built assistive classroom device for nonverbal students, developed in Northeastern's Forge Hardware Product Lab.",
@@ -92,6 +96,7 @@ export const projects = [
   {
     slug: "ir-sensor-puzzle-controller",
     thumbnail: "/projects/ir-sensor-puzzle-controller/thumb.jpg",
+    thumbnailPosition: "center 80%",
     title: "IR-Sensor Puzzle Controller",
     blurb:
       "The complete electronics system for an interactive escape-room puzzle.",

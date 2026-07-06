@@ -9,7 +9,14 @@ const { project } = Astro.props;
   <div class="project-thumb">
     {
       project.thumbnail ? (
-        <img src={project.thumbnail} alt={project.title} loading="lazy" />
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          loading="lazy"
+          style={project.thumbnailPosition
+            ? `object-position: ${project.thumbnailPosition}`
+            : undefined}
+        />
       ) : (
         "Project image"
       )
