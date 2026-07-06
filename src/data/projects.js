@@ -10,6 +10,7 @@
 //                  (use lowercase-with-dashes, no spaces)
 //    title       - project name
 //    blurb       - one short line shown on the card
+//    thumbnail   - (optional) card image path; falls back to a placeholder
 //    tags        - small labels (skills/tools); shown as pills on the card
 //    featured    - true = also show it on the Home page
 //    description - the detail-page text. Can be ONE string, OR an array of
@@ -21,6 +22,7 @@
 export const projects = [
   {
     slug: "dc-power-analyzer",
+    thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
     title: "DC Power Analyzer",
     blurb:
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
@@ -55,6 +57,7 @@ export const projects = [
   },
   {
     slug: "boxy",
+    thumbnail: "/projects/boxy/thumb.jpg",
     title: "Boxy",
     blurb:
       "A team-built assistive classroom device for nonverbal students, developed in Northeastern's Forge Hardware Product Lab.",
@@ -88,6 +91,7 @@ export const projects = [
   },
   {
     slug: "ir-sensor-puzzle-controller",
+    thumbnail: "/projects/ir-sensor-puzzle-controller/thumb.jpg",
     title: "IR-Sensor Puzzle Controller",
     blurb:
       "The complete electronics system for an interactive escape-room puzzle.",
@@ -124,6 +128,7 @@ export const projects = [
   },
   {
     slug: "whack-a-mole",
+    thumbnail: "/projects/whack-a-mole/thumb.jpg",
     title: "Whack-a-Mole Electromechanical Game",
     blurb:
       "An interactive arcade game with servo-driven moles, physical buttons, and live LCD scoring.",
@@ -152,6 +157,7 @@ export const projects = [
   },
   {
     slug: "sustainafill",
+    thumbnail: "/projects/sustainafill/thumb.jpg",
     title: "SustainaFill",
     blurb:
       "A venture I pitched to connect students with campus water refill stations, cutting single-use plastic waste.",
