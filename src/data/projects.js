@@ -25,7 +25,6 @@ export const projects = [
   {
     slug: "dc-power-analyzer",
     thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
-    thumbnailPosition: "center 40%",
     title: "DC Power Analyzer",
     blurb:
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
@@ -61,7 +60,6 @@ export const projects = [
   {
     slug: "boxy",
     thumbnail: "/projects/boxy/thumb.jpg",
-    thumbnailPosition: "center 30%",
     title: "Boxy",
     blurb:
       "A team-built assistive classroom device for nonverbal students, developed in Northeastern's Forge Hardware Product Lab.",
@@ -96,7 +94,6 @@ export const projects = [
   {
     slug: "ir-sensor-puzzle-controller",
     thumbnail: "/projects/ir-sensor-puzzle-controller/thumb.jpg",
-    thumbnailPosition: "center 30%",
     title: "IR-Sensor Puzzle Controller",
     blurb:
       "The complete electronics system for an interactive escape-room puzzle.",
