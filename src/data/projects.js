@@ -23,6 +23,23 @@
 // =====================================================================
 export const projects = [
   {
+    slug: "foc-motor-controller",
+    title: "FOC Motor Controller and Reaction-Wheel Inverted Pendulum",
+    blurb:
+      "A self-directed build of a custom FOC brushless motor controller driving a self-balancing reaction-wheel inverted pendulum.",
+    tags: ["Motor Control", "Power Electronics", "Embedded", "Controls", "PCB Layout"],
+    featured: true,
+    status:
+      "In progress. Brushless motor running under field-oriented control on a development kit; custom inverter PCB and control firmware in active development.",
+    tools: ["STM32", "Altium", "LTspice", "SolidWorks"],
+    description: [
+      "My flagship personal project: a self-directed build of a custom field-oriented control (FOC) brushless motor controller that will drive a reaction-wheel inverted pendulum, a robot that holds itself upright by spinning a flywheel to generate correcting torque. The goal is to own the entire system end to end, from the power electronics and PCB, to the real-time control firmware, to the mechanical design.",
+      "I scoped this project on my own to build depth in actuation and closed-loop control, the areas I most wanted to grow. Before touching hardware, I worked through the system design from first principles: the three-phase inverter topology and why it takes six MOSFETs, the role of the gate driver, and the division of labor between the microcontroller, driver, and power stage. I then got a brushless motor spinning under field-oriented control on an STM32 motor-control development kit, grounding the design work on real hardware.",
+      "From here, the build moves into its core engineering phases: designing my own 3-phase inverter PCB in Altium (STM32G4 microcontroller, a six-MOSFET power stage, gate driver, and current sensing), writing the firmware for the control loop, and finally the mechanical reaction-wheel pendulum in SolidWorks with encoder and IMU feedback driving a balancing controller.",
+      "This is the project I am most excited about: taking a hardware system from first principles all the way to a physical demo that visibly balances itself.",
+    ],
+  },
+  {
     slug: "dc-power-analyzer",
     thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
     title: "DC Power Analyzer",
