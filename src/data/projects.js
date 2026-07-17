@@ -47,7 +47,7 @@ export const projects = [
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
     tags: ["Analog Design", "PCB Layout", "Altium", "LTspice"],
     featured: true,
-    status: "Prototype built and validated; custom PCB layout in progress.",
+    status: "Prototype built and validated; Altium PCB workflow validated on a test board; full custom PCB layout in progress.",
     tools: ["Altium Designer", "LTspice", "Oscilloscope", "Multimeter"],
     images: [
       {
@@ -66,11 +66,16 @@ export const projects = [
         src: "/projects/dc-power-analyzer/rc_lowpass_bode.png",
         caption: "LTspice frequency response of the filter",
       },
+      {
+        src: "/projects/dc-power-analyzer/RC_Filter_PCB_3D.png",
+        caption: "Altium 3D view of the RC filter workflow validation board",
+      },
     ],
     description: [
       "The DC Power Analyzer is a precision measurement system I designed to accurately profile the voltage, current, and power draw of DC devices. It is the kind of instrument you reach for when you need to characterize exactly how much a circuit is consuming.",
       "At its core is a custom current-sense amplifier stage built around the INA180, feeding a Sallen-Key anti-aliasing filter that conditions the signal before digitization. I simulated the full signal chain in LTspice to verify the amplifier and filter response, then validated the real hardware on the oscilloscope against those predictions.",
       "I laid out the PCB in Altium Designer with close attention to the analog details that make or break a measurement instrument: careful ground-plane management, Kelvin (4-wire) sensing for accurate current measurement, and isolation between the analog and digital sections to keep switching noise off the measurement path.",
+      "To de-risk the custom board, I first took a simple RC low-pass filter (the same 1.5k ohm and 100nF filter I built and bench-validated on the breadboard, with a cutoff near 1kHz) through the complete PCB workflow in Altium Designer: schematic capture, component footprints, board layout, 3D review, and generation of the Gerber and NC drill fabrication files. This validated the full schematic-to-fabrication toolchain end to end before committing the analyzer's full design to it.",
       "The project grew out of wanting to build something genuinely EE-focused and analog-heavy. I wanted a real signal-chain design problem rather than a beginner microcontroller tutorial.",
     ],
   },
