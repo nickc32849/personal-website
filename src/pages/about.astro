@@ -22,12 +22,19 @@ const skillGroups = [
   { name: "Tools", items: ["LTspice", "KiCad", "Altium", "Git", "SolidWorks"] },
 ];
 
-// Honors & involvement — kept short and clean (no long descriptions).
+// Honors and involvement, split into two groups (kept short, no descriptions).
 const honors = [
-  "Tau Beta Pi",
   "IEEE-HKN (Treasurer)",
+  "Tau Beta Pi",
   "John Martinson Honors Program",
   "Dean's List",
+];
+const involvement = [
+  "Forge Hardware Product Lab",
+  "Engineers Without Borders",
+  "Entrepreneurs Club Oakland (2nd Place, Husky Startup Challenge)",
+  "IEEE",
+  "Global Scholars Program: NU Oakland (Fall 2024), NU London (Spring 2025)",
 ];
 ---
 
@@ -101,9 +108,20 @@ const honors = [
   <section class="section honors-section">
     <div class="container">
       <h2 class="section-title">Honors &amp; Involvement</h2>
-      <ul class="honors-list">
-        {honors.map((item) => <li>{item}</li>)}
-      </ul>
+      <div class="honors-grid">
+        <div class="honors-group">
+          <h3 class="honors-group-name">Honors</h3>
+          <ul class="honors-list">
+            {honors.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="honors-group">
+          <h3 class="honors-group-name">Involvement</h3>
+          <ul class="honors-list">
+            {involvement.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 </Base>
@@ -196,12 +214,20 @@ const honors = [
   .honors-section {
     border-top: 1px solid var(--color-border);
   }
+  .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+  }
+  .honors-group-name {
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+  }
   .honors-list {
     list-style: none;
     padding: 0;
     display: grid;
     gap: 0.5rem;
-    max-width: 45ch;
   }
   .honors-list li {
     position: relative;
