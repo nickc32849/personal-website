@@ -19,12 +19,15 @@
 //                  strings where each becomes its own paragraph.
 //    tools       - (optional) list of tools/instruments, shown on the detail page
 //    status      - (optional) short status line, shown on the detail page
+//    badge       - (optional) short status pill (e.g. "In Progress"), shown on
+//                  the card and at the top of the detail page (accent color)
 //    images      - (optional) gallery: array of { src, caption } objects
 // =====================================================================
 export const projects = [
   {
     slug: "foc-motor-controller",
     title: "FOC Motor Controller and Reaction-Wheel Inverted Pendulum",
+    badge: "In Progress",
     blurb:
       "A self-directed build of a custom FOC brushless motor controller driving a self-balancing reaction-wheel inverted pendulum.",
     tags: ["Motor Control", "Power Electronics", "Embedded", "Controls", "PCB Layout"],

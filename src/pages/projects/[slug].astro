@@ -28,6 +28,8 @@ const paragraphs = Array.isArray(project.description)
 
       <h1 class="detail-title">{project.title}</h1>
 
+      {project.badge && <span class="status-badge">{project.badge}</span>}
+
       {project.status && <p class="detail-status">{project.status}</p>}
 
       {
@@ -86,6 +88,9 @@ const paragraphs = Array.isArray(project.description)
     font-size: 2.25rem;
     letter-spacing: -0.02em;
     margin-top: 1rem;
+  }
+  .status-badge {
+    margin-top: 0.75rem;
   }
   .detail-status {
     margin-top: 0.5rem;

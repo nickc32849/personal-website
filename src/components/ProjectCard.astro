@@ -24,6 +24,7 @@ const { project } = Astro.props;
   </div>
   <div class="project-body">
     <h3 class="project-title">{project.title}</h3>
+    {project.badge && <span class="status-badge">{project.badge}</span>}
     <p class="project-blurb">{project.blurb}</p>
     {
       project.tags && project.tags.length > 0 && (
@@ -69,6 +70,9 @@ const { project } = Astro.props;
   .project-title {
     font-size: 1.1rem;
     letter-spacing: -0.01em;
+  }
+  .status-badge {
+    margin-top: 0.55rem;
   }
   .project-blurb {
     color: var(--color-muted);
