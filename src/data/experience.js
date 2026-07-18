@@ -13,12 +13,15 @@
 export const experiences = [
   {
     role: "Electrical Engineering Co-op",
-    organization: "Communications and Power Industries (CPI)",
+    organization: "CPI Electron Device Business",
     location: "Beverly, MA",
     dates: "Jun to Dec 2026",
     bullets: [
-      "Perform hands-on RF, microwave, and radar hardware work on the bench, including testing, tuning, and validation of high-power electron device assemblies.",
-      "Build practical experience with transmission line concepts, receiver protectors, and RF test equipment such as network analyzers.",
+      "Root-caused a component-fit failure on a production RF/microwave PCB by comparing datasheets, footprints, and electrical ratings of original and substitute ICs, isolating the fault to the board layout rather than the part.",
+      "Developed a manual rework procedure to recover 5 affected boards, iterating soldering instructions with assemblers and completing production documentation for release in an ITAR-regulated defense environment.",
+      "Redesigned the PCB in OrCAD X Capture, building a custom part library with class-correct component properties and validating connectivity with a digital multimeter (DMM).",
+      "Produced a vendor-ready BOM and design package for PCB layout and scoped a test harness to electrically screen the redesigned board; designated to lead all active and upcoming vendor PCB designs through the calendar year.",
+      "Self-initiated assembly of an RF test kit for a limiter, building waveguide, coupler, and circulator subassemblies to diagram.",
     ],
   },
   {
