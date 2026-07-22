@@ -74,10 +74,11 @@ const currentPath = Astro.url.pathname;
   .nav-link:hover {
     color: var(--color-text);
   }
-  /* The link for the current page gets darkened + bolded */
+  /* The current page uses the accent color so it's distinct from a merely
+     hovered link (hover darkens to text color; active is accent). */
   .nav-link[aria-current="page"] {
-    color: var(--color-text);
-    font-weight: 500;
+    color: var(--color-accent);
+    font-weight: 600;
   }
 
   /* On narrow screens, let the links wrap neatly */
