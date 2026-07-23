@@ -5,15 +5,9 @@ import Base from "../layouts/Base.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects.js";
 
-// =====================================================================
-//  IMAGE PLACEHOLDERS: the two spots to swap your real photos.
-//  Files live in the /public folder. To use your own photo:
-//    1. Drop your image into the /public folder (e.g. public/hero.jpg)
-//    2. Change the path below to match (e.g. "/hero.jpg")
-//  (Paths start with "/" which means "the public folder".)
-// =====================================================================
-const heroImage = "/hero.jpg"; // #1: full-screen background photo
-const portraitImage = "/portrait.jpg"; // #2: photo in the intro section
+// Hero background photo. To swap it, drop your image into /public and update
+// this path (paths starting with "/" resolve to the public folder).
+const heroImage = "/hero.jpg";
 
 // Show only the projects marked `featured: true` in src/data/projects.js
 const featuredProjects = projects.filter((project) => project.featured);
@@ -28,23 +22,7 @@ const featuredProjects = projects.filter((project) => project.featured);
     </div>
   </section>
 
-  <!-- ===== 2. INTRO: paragraph beside a portrait photo ===== -->
-  <section id="intro" class="section">
-    <div class="container intro-grid">
-      <img class="intro-photo" src={portraitImage} alt="Nick Carpenter" />
-      <div class="intro-text">
-        <h2 class="section-title">About</h2>
-        <p class="intro">
-          I am a third-year Electrical Engineering student at Northeastern,
-          drawn to the hard problems in energy, space, lasers, and EVs. I like
-          building hardware that people can genuinely depend on, and I am always
-          looking to learn and take on more.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 3. BUTTON ROW ===== -->
+  <!-- ===== 2. BUTTON ROW ===== -->
   <section class="button-section">
     <div class="container">
       <div class="button-row">
@@ -55,7 +33,7 @@ const featuredProjects = projects.filter((project) => project.featured);
     </div>
   </section>
 
-  <!-- ===== 4. FEATURED PROJECTS (unchanged) ===== -->
+  <!-- ===== 3. FEATURED PROJECTS ===== -->
   <section class="section">
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
@@ -109,36 +87,9 @@ const featuredProjects = projects.filter((project) => project.featured);
     color: rgba(255, 255, 255, 0.85);
   }
 
-  /* ----- Intro (text + portrait side by side) ----- */
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr; /* photo left (narrower), text right (wider) */
-    gap: 3rem;
-    align-items: center;
-  }
-  .intro {
-    font-size: 1.15rem;
-    max-width: 55ch;
-  }
-  .intro-photo {
-    width: 100%;
-    border-radius: var(--radius);
-    aspect-ratio: 4 / 5; /* portrait shape */
-    object-fit: cover; /* crop to fill without distortion */
-  }
-  /* Stack them vertically on narrow screens */
-  @media (max-width: 720px) {
-    .intro-grid {
-      grid-template-columns: 1fr;
-    }
-    .intro-photo {
-      max-width: 320px;
-    }
-  }
-
-  /* ----- Button row (its own band, no big top gap after intro) ----- */
+  /* ----- Button row ----- */
   .button-section {
-    padding-bottom: 2rem;
+    padding-top: 4rem;
   }
   .button-row {
     display: flex;
