@@ -30,8 +30,6 @@ const paragraphs = Array.isArray(project.description)
 
       {project.badge && <span class="status-badge">{project.badge}</span>}
 
-      {project.status && <p class="detail-status">{project.status}</p>}
-
       {
         project.tags && project.tags.length > 0 && (
           <ul class="project-tags">
@@ -39,6 +37,42 @@ const paragraphs = Array.isArray(project.description)
           </ul>
         )
       }
+
+      <!-- Compact metadata strip: small labels, folds in Tools and Status -->
+      <dl class="meta-strip">
+        {
+          project.type && (
+            <div class="meta-row">
+              <dt>Type</dt>
+              <dd>{project.type}</dd>
+            </div>
+          )
+        }
+        {
+          project.role && (
+            <div class="meta-row">
+              <dt>Role</dt>
+              <dd>{project.role}</dd>
+            </div>
+          )
+        }
+        {
+          project.tools && project.tools.length > 0 && (
+            <div class="meta-row">
+              <dt>Tools</dt>
+              <dd>{project.tools.join(", ")}</dd>
+            </div>
+          )
+        }
+        {
+          project.status && (
+            <div class="meta-row">
+              <dt>Status</dt>
+              <dd>{project.status}</dd>
+            </div>
+          )
+        }
+      </dl>
 
       {
         project.images && project.images.length > 0 ? (
@@ -58,17 +92,6 @@ const paragraphs = Array.isArray(project.description)
       <div class="detail-body">
         {paragraphs.map((para) => <p>{para}</p>)}
       </div>
-
-      {
-        project.tools && project.tools.length > 0 && (
-          <div class="detail-tools">
-            <h2 class="tools-title">Tools</h2>
-            <ul class="tool-pills">
-              {project.tools.map((tool) => <li>{tool}</li>)}
-            </ul>
-          </div>
-        )
-      }
     </div>
   </section>
 </Base>
@@ -92,12 +115,39 @@ const paragraphs = Array.isArray(project.description)
   .status-badge {
     margin-top: 0.75rem;
   }
-  .detail-status {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--color-muted);
+
+  /* ----- Compact metadata strip ----- */
+  .meta-strip {
+    margin: 1.5rem 0 2rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    gap: 0.65rem;
+  }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .meta-row dt {
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+  .meta-row dd {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 480px) {
+    .meta-row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
   }
 
   .project-tags {
@@ -162,30 +212,5 @@ const paragraphs = Array.isArray(project.description)
   }
   .detail-body p:last-child {
     margin-bottom: 0;
-  }
-
-  /* ----- Tools ----- */
-  .detail-tools {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-  }
-  .tools-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.9rem;
-  }
-  .tool-pills {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .tool-pills li {
-    font-size: 0.85rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    padding: 0.3rem 0.8rem;
   }
 </style>

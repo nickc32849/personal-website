@@ -17,8 +17,10 @@
 //    featured    - true = also show it on the Home page
 //    description - the detail-page text. Can be ONE string, OR an array of
 //                  strings where each becomes its own paragraph.
-//    tools       - (optional) list of tools/instruments, shown on the detail page
-//    status      - (optional) short status line, shown on the detail page
+//    type        - (optional) project type and dates, shown in the metadata strip
+//    role        - (optional) your role, shown in the metadata strip
+//    tools       - (optional) list of tools; shown in the detail metadata strip
+//    status      - (optional) short status line, shown in the detail metadata strip
 //    badge       - (optional) short status pill (e.g. "In Progress"), shown on
 //                  the card and at the top of the detail page (accent color)
 //    images      - (optional) gallery: array of { src, caption } objects
@@ -32,9 +34,26 @@ export const projects = [
       "A self-directed build of a custom FOC brushless motor controller driving a self-balancing reaction-wheel inverted pendulum.",
     tags: ["Motor Control", "Power Electronics", "Embedded", "Controls", "PCB Layout"],
     featured: true,
+    type: "Personal project, Jul 2026 to present",
+    role: "Sole designer",
     status:
       "In progress. Brushless motor running under field-oriented control on a development kit; custom inverter PCB and control firmware in active development.",
     tools: ["STM32", "Altium", "LTspice", "SolidWorks"],
+    images: [
+      {
+        src: "/projects/foc-motor-controller/foc-block-diagram.png",
+        caption:
+          "System block diagram: microcontroller, gate driver, three-phase inverter, motor, and feedback",
+      },
+      {
+        src: "/projects/foc-motor-controller/foc-concept-sketch.png",
+        caption: "Initial concept sketch of the reaction-wheel inverted pendulum",
+      },
+      {
+        src: "/projects/foc-motor-controller/foc-schematic-sketch.png",
+        caption: "Early power stage schematic from the design phase",
+      },
+    ],
     description: [
       "My flagship personal project: a self-directed build of a custom field-oriented control (FOC) brushless motor controller that will drive a reaction-wheel inverted pendulum, a robot that holds itself upright by spinning a flywheel to generate correcting torque. The goal is to own the entire system end to end, from the power electronics and PCB, to the real-time control firmware, to the mechanical design.",
       "I scoped this project on my own to build depth in actuation and closed-loop control, the areas I most wanted to grow. Before touching hardware, I worked through the system design from first principles: the three-phase inverter topology and why it takes six MOSFETs, the role of the gate driver, and the division of labor between the microcontroller, driver, and power stage. I then got a brushless motor spinning under field-oriented control on an STM32 motor-control development kit, grounding the design work on real hardware.",
@@ -50,6 +69,8 @@ export const projects = [
       "A precision system for profiling the voltage, current, and power draw of DC devices.",
     tags: ["Analog Design", "PCB Layout", "Altium", "LTspice"],
     featured: true,
+    type: "Personal project, Feb to May 2026",
+    role: "Sole designer",
     status: "Prototype built and validated; Altium PCB workflow validated on a test board; full custom PCB layout in progress.",
     tools: ["Altium Designer", "LTspice", "Oscilloscope", "Multimeter"],
     images: [
@@ -90,7 +111,9 @@ export const projects = [
       "A team-built assistive classroom device for nonverbal students, developed in Northeastern's Forge Hardware Product Lab.",
     tags: ["Hardware", "KiCad", "Arduino", "Power"],
     featured: true,
-    status: "Completed as part of the Forge Hardware Product Lab (Jan to Jun 2026).",
+    type: "Team project, Forge Hardware Product Lab, Jan to Jun 2026",
+    role: "I owned the electromagnetic lock subsystem: relay driver design in KiCad, Arduino control firmware, and the battery pack and power budget measurements.",
+    status: "Completed.",
     tools: ["KiCad", "Arduino", "Multimeter"],
     images: [
       {
@@ -124,7 +147,9 @@ export const projects = [
       "The complete electronics system for an interactive escape-room puzzle.",
     tags: ["Embedded", "Firmware", "Sensors", "MicroPython"],
     featured: true,
-    status: "Completed for Cornerstone of Engineering 2 (Jan to Jun 2026).",
+    type: "Class project, Cornerstone of Engineering 2, Jan to Jun 2026",
+    role: "Sole designer of the electronics and firmware",
+    status: "Completed.",
     tools: [
       "Raspberry Pi Pico",
       "MicroPython",
@@ -161,7 +186,9 @@ export const projects = [
       "An interactive arcade game with servo-driven moles, physical buttons, and live LCD scoring.",
     tags: ["Electromechanical", "Embedded", "MicroPython", "Power"],
     featured: false,
-    status: "Completed for Cornerstone of Engineering 1 (Sep to Dec 2025).",
+    type: "Class project, Cornerstone of Engineering 1, Sep to Dec 2025",
+    role: "Team project; I focused on the electronics and the dual-battery power fix",
+    status: "Completed.",
     tools: ["Raspberry Pi Pico", "MicroPython", "Servo motors", "LCD"],
     images: [
       {
@@ -190,7 +217,9 @@ export const projects = [
       "A venture I pitched to connect students with campus water refill stations, cutting single-use plastic waste.",
     tags: ["Entrepreneurship", "Product", "Business Strategy"],
     featured: false,
-    status: "2nd place, Husky Startup Challenge (2024).",
+    type: "Entrepreneurship pitch, Husky Startup Challenge, Dec 2024",
+    role: "Developed the concept, business model, and pitch",
+    status: "2nd place.",
     tools: ["Pitch deck", "Market research", "Financial modeling"],
     images: [
       {
