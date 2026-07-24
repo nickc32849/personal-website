@@ -23,7 +23,9 @@
 //    status      - (optional) short status line, shown in the detail metadata strip
 //    badge       - (optional) short status pill (e.g. "In Progress"), shown on
 //                  the card and at the top of the detail page (accent color)
-//    images      - (optional) gallery: array of { src, caption } objects
+//    images      - (optional) gallery: array of { src, caption } objects.
+//                  Add type: "video" to render an inline <video> player instead
+//                  of an image (src should point to an mp4).
 // =====================================================================
 export const projects = [
   {
@@ -40,6 +42,12 @@ export const projects = [
       "In progress. Brushless motor running under field-oriented control on a development kit; custom inverter PCB and control firmware in active development.",
     tools: ["STM32", "Altium", "LTspice", "SolidWorks"],
     images: [
+      {
+        type: "video",
+        src: "/projects/foc-motor-controller/motor-spin.mp4",
+        caption:
+          "First motor spin under field-oriented control on the ST development kit",
+      },
       {
         src: "/projects/foc-motor-controller/foc-block-diagram.png",
         caption:
