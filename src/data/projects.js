@@ -30,6 +30,7 @@
 export const projects = [
   {
     slug: "foc-motor-controller",
+    thumbnail: "/projects/foc-motor-controller/thumb.jpg",
     title: "FOC Motor Controller and Reaction-Wheel Inverted Pendulum",
     badge: "In Progress",
     blurb:
@@ -63,7 +64,7 @@ export const projects = [
       },
     ],
     description: [
-      "I decided to build my own field-oriented control (FOC) brushless motor controller for a reaction-wheel inverted pendulum. The robot will stay balanced by spinning a flywheel to create torque. My goal is to design and build every part myself, including the power electronics, PCB, control firmware, and mechanical parts.",
+      "I am building my own field-oriented control (FOC) brushless motor controller for a reaction-wheel inverted pendulum. The robot will stay balanced by spinning a flywheel to create torque. My goal is to design and build every part myself, including the power electronics, PCB, control firmware, and mechanical parts.",
       "I took on this project by myself to learn more about actuation and closed-loop control. I began by designing the system from the ground up, then focused on the hardware. I learned how a three-phase inverter with six MOSFETs works, what the gate driver does, and how the microcontroller, driver, and power stage all connect. Before designing my own board, I ran a brushless motor with field-oriented control on an STM32 development kit.",
       "Next, I will move on to the main engineering steps. First, I plan to design my own 3-phase inverter PCB in Altium, using an STM32G4 microcontroller, a six-MOSFET power stage, a gate driver, and current sensors. After that, I will write the firmware for the control loop. Finally, I will design the mechanical reaction-wheel pendulum in SolidWorks and add encoder and IMU feedback to help the controller keep the robot balanced.",
       "This is the project I am most excited about because I get to turn an idea into real hardware that can balance itself.",

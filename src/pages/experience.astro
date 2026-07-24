@@ -46,6 +46,7 @@ const resumeFile = "/resume.pdf";
                 {exp.location && ` · ${exp.location}`}
               </p>
               {exp.context && <p class="timeline-context">{exp.context}</p>}
+              {exp.narrative && <p class="timeline-narrative">{exp.narrative}</p>}
               <ul class="timeline-bullets">
                 {exp.bullets.map((bullet) => (
                   <li>{bullet}</li>
@@ -147,6 +148,13 @@ const resumeFile = "/resume.pdf";
     font-size: 1rem;
     line-height: 1.55;
     max-width: 72ch;
+  }
+  .timeline-narrative {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 72ch;
+    color: var(--color-muted);
   }
   .timeline-bullets {
     margin-top: 0.75rem;
