@@ -63,10 +63,10 @@ export const projects = [
       },
     ],
     description: [
-      "My flagship personal project: a self-directed build of a custom field-oriented control (FOC) brushless motor controller that will drive a reaction-wheel inverted pendulum, a robot that holds itself upright by spinning a flywheel to generate correcting torque. The goal is to own the entire system end to end, from the power electronics and PCB, to the real-time control firmware, to the mechanical design.",
-      "I scoped this project on my own to build depth in actuation and closed-loop control, the areas I most wanted to grow. Before touching hardware, I worked through the system design from first principles: the three-phase inverter topology and why it takes six MOSFETs, the role of the gate driver, and the division of labor between the microcontroller, driver, and power stage. I then got a brushless motor spinning under field-oriented control on an STM32 motor-control development kit, grounding the design work on real hardware.",
-      "From here, the build moves into its core engineering phases: designing my own 3-phase inverter PCB in Altium (STM32G4 microcontroller, a six-MOSFET power stage, gate driver, and current sensing), writing the firmware for the control loop, and finally the mechanical reaction-wheel pendulum in SolidWorks with encoder and IMU feedback driving a balancing controller.",
-      "This is the project I am most excited about: taking a hardware system from first principles all the way to a physical demo that visibly balances itself.",
+      "I decided to build my own field-oriented control (FOC) brushless motor controller for a reaction-wheel inverted pendulum. The robot will stay balanced by spinning a flywheel to create torque. My goal is to design and build every part myself, including the power electronics, PCB, control firmware, and mechanical parts.",
+      "I took on this project by myself to learn more about actuation and closed-loop control. I began by designing the system from the ground up, then focused on the hardware. I learned how a three-phase inverter with six MOSFETs works, what the gate driver does, and how the microcontroller, driver, and power stage all connect. Before designing my own board, I ran a brushless motor with field-oriented control on an STM32 development kit.",
+      "Next, I will move on to the main engineering steps. First, I plan to design my own 3-phase inverter PCB in Altium, using an STM32G4 microcontroller, a six-MOSFET power stage, a gate driver, and current sensors. After that, I will write the firmware for the control loop. Finally, I will design the mechanical reaction-wheel pendulum in SolidWorks and add encoder and IMU feedback to help the controller keep the robot balanced.",
+      "This is the project I am most excited about because I get to turn an idea into real hardware that can balance itself.",
     ],
   },
   {
@@ -79,7 +79,7 @@ export const projects = [
     featured: true,
     type: "Personal project, Feb to May 2026",
     role: "Sole designer",
-    status: "Prototype built and validated; Altium PCB workflow validated on a test board; full custom PCB layout in progress.",
+    status: "Concluded at working prototype. Breadboard prototype validated within 1% of a calibrated multimeter; Altium PCB workflow validated on a standalone test board.",
     tools: ["Altium Designer", "LTspice", "Oscilloscope", "Multimeter"],
     images: [
       {
@@ -104,11 +104,11 @@ export const projects = [
       },
     ],
     description: [
-      "The DC Power Analyzer is a precision measurement system I designed to accurately profile the voltage, current, and power draw of DC devices. It is the kind of instrument you reach for when you need to characterize exactly how much a circuit is consuming.",
-      "At its core is a custom current-sense amplifier stage built around the INA180, feeding a Sallen-Key anti-aliasing filter that conditions the signal before digitization. I simulated the full signal chain in LTspice to verify the amplifier and filter response, then validated the real hardware on the oscilloscope against those predictions.",
-      "I laid out the PCB in Altium Designer with close attention to the analog details that make or break a measurement instrument: careful ground-plane management, Kelvin (4-wire) sensing for accurate current measurement, and isolation between the analog and digital sections to keep switching noise off the measurement path.",
-      "To de-risk the custom board, I first took a simple RC low-pass filter (the same 1.5k ohm and 100nF filter I built and bench-validated on the breadboard, with a cutoff near 1kHz) through the complete PCB workflow in Altium Designer: schematic capture, component footprints, board layout, 3D review, and generation of the Gerber and NC drill fabrication files. This validated the full schematic-to-fabrication toolchain end to end before committing the analyzer's full design to it.",
-      "The project grew out of wanting to build something genuinely EE-focused and analog-heavy. I wanted a real signal-chain design problem rather than a beginner microcontroller tutorial.",
+      "I designed the DC Power Analyzer as a precise tool for measuring the voltage, current, and power use of DC devices. It displays exactly how much power a circuit is using.",
+      "The main part of the analyzer is a custom current-sense amplifier using the INA180, which sends its signal through a Sallen-Key anti-aliasing filter before digitization. I simulated the whole signal chain in LTspice to verify the amplifier and filter, then tested the real hardware on the oscilloscope to confirm it matched my predictions. The working breadboard prototype reads voltage, current, and power live on an OLED display, validated within 1% of a calibrated multimeter.",
+      "In Altium Designer, my PCB design focused on the analog details that affect measurement accuracy, including careful ground-plane management, Kelvin (4-wire) sensing for precise current readings, and keeping the analog and digital sections separate to avoid noise in the measurements.",
+      "To reduce risk with the custom board, I started by taking a simple RC low-pass filter (the same 1.5k ohm and 100nF filter I tested on a breadboard with a cutoff near 1kHz) through the full PCB process in Altium Designer. I went from schematic capture to component footprints, board layout, 3D review, and finally generated the Gerber and NC drill files. This let me test the whole design-to-fabrication process before moving on to the full analyzer.",
+      "I started this project because I wanted to build something truly focused on electrical engineering and analog design. I was looking for a real signal-chain challenge, not just another beginner microcontroller project. I completed it as a working prototype and carried the analog design and PCB skills straight into my current project, the FOC motor controller and reaction-wheel inverted pendulum.",
     ],
   },
   {
@@ -142,9 +142,9 @@ export const projects = [
       },
     ],
     description: [
-      "Boxy is an Assistive Communication Caddy, a team-built classroom device for nonverbal students that my team developed start to finish in Northeastern's Forge Hardware Product Lab.",
-      "I owned the electromagnetic lock subsystem. I designed a 5V relay driver in KiCad and wrote non-blocking Arduino control firmware so the lock could operate without stalling the rest of the system.",
-      "I also built and verified the project's 2x2 AA battery pack, which supplies about 6.67V, and measured per-component current draw with a multimeter to size the team's shared power budget.",
+      "Boxy is an Assistive Communication Caddy, a classroom device for nonverbal students that my team built from the ground up in Northeastern's Forge Hardware Product Lab.",
+      "I was responsible for the electromagnetic lock subsystem. I designed a 5V relay driver in KiCad and wrote non-blocking Arduino control firmware, allowing the lock to work without interrupting the rest of the system.",
+      "I also built and tested the project's 2x2 AA battery pack, which provides about 6.67V. I measured the current draw of each component with a multimeter to help determine the team's overall power budget.",
     ],
   },
   {
@@ -180,10 +180,10 @@ export const projects = [
       },
     ],
     description: [
-      "The IR-Sensor Puzzle Controller is the complete electronics system for an interactive escape-room puzzle, built for Cornerstone of Engineering 2.",
-      "I wired a Raspberry Pi Pico to eight IR break-beam sensors, an I2C LCD, and a pushbutton across shared power and ground rails with pull-up resistors.",
-      "I then wrote MicroPython firmware from scratch for sensor polling, hold-to-check button debouncing, and a state-based LCD interface.",
-      "I refined the input logic and display loop through iterative playtesting to eliminate false triggers and screen flicker.",
+      "The IR-Sensor Puzzle Controller is a full electronics system designed for an interactive escape-room puzzle. I built it as part of the Cornerstone of Engineering 2 course.",
+      "I connected a Raspberry Pi Pico to eight IR break-beam sensors, an I2C LCD, and a pushbutton. All components shared power and ground rails, with pull-up resistors on the inputs.",
+      "I then wrote MicroPython firmware that handles sensor polling, debounces the hold-to-check button, and manages a state-based LCD interface.",
+      "Playtesting several rounds helped me refine the input logic and display loop, removing false triggers and screen flicker.",
     ],
   },
   {
@@ -213,8 +213,8 @@ export const projects = [
       },
     ],
     description: [
-      "The Whack-a-Mole Electromechanical Game is an interactive arcade game that integrates five servo motors, physical input buttons, and an LCD for real-time scoring, all controlled by a Raspberry Pi Pico running MicroPython. I built it for Cornerstone of Engineering 1.",
-      "The most interesting engineering challenge was reliability. I diagnosed a system-level power instability that was causing voltage dropouts, and I resolved it by implementing a dual-battery power architecture that eliminated the failures and made the game consistently playable.",
+      "The Whack-a-Mole Electromechanical Game is an arcade game my team built for Cornerstone of Engineering 1. It uses five servo motors, physical buttons, and an LCD to show scores in real time, all managed by a Raspberry Pi Pico with MicroPython.",
+      "The biggest engineering challenge was making the game reliable. I found that power instability was causing voltage dropouts, so I fixed it by adding a dual-battery setup. This solved the problem and made the game consistently playable.",
     ],
   },
   {
@@ -248,9 +248,9 @@ export const projects = [
       },
     ],
     description: [
-      "SustainaFill is a venture I pitched to close the gap between campus water refill stations and student awareness, cutting single-use plastic waste while saving students money. The concept is a mobile app with real-time GPS station mapping, hydration and nearby-station notifications, and student ID integration that gives universities data-driven insight into station usage and placement.",
-      "I built the full business case around it: a tiered university licensing model ($5,000 to $15,000 per year by school size), sponsored eco-brand partnerships, and anonymized data-insight reports. I developed a five-year profitability projection showing a path from an initial investment year to roughly $1.5 million in net profit by year five at 250 university partners. My market research found that 91% of students would switch to reusable bottles if refill stations were conveniently located, and I built a customer persona and competitive analysis positioning SustainaFill against existing apps through its campus-specific focus, indoor navigation, and administrator analytics.",
-      "I delivered the pitch on demo day and placed 2nd. Judges highlighted the strength of the app design, the clarity of the customer profile, and the revenue model. This project reflects my interest in the intersection of engineering and entrepreneurship, and my longer-term goal of building a company with a positive impact.",
+      "I came up with SustainaFill to help students find campus water refill stations more easily, reduce single-use plastic waste, and save money. The idea is a mobile app that shows real-time GPS locations of refill stations, sends hydration reminders and alerts for nearby stations, and connects with student IDs so universities can see how stations are used and where to add more.",
+      "I put together a full business plan for SustainaFill. The plan includes a university licensing model with fees based on school size, partnerships with eco-friendly brands, and reports that share anonymous data insights. I projected a path from an initial investment year to about $1.5 million in net profit by year five with 250 university partners. My research showed that 91% of students would use reusable bottles if refill stations were easy to find. I also created a customer profile and compared SustainaFill to other apps, highlighting its focus on campuses, indoor navigation, and tools for university administrators.",
+      "I presented SustainaFill on demo day and finished in second place. The judges praised the app's design, the clear customer profile, and the revenue model. This project shows how much I enjoy combining engineering with entrepreneurship, and it connects to my goal of starting a company that makes a positive difference.",
     ],
   },
 ];
