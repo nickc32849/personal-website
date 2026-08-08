@@ -75,7 +75,26 @@ const paragraphs = Array.isArray(project.description)
       </dl>
 
       {
-        project.images && project.images.length > 0 ? (
+        project.sections && project.sections.length > 0 ? (
+          project.sections.map((sec) => (
+            <div class="detail-section">
+              {sec.title && <h2 class="detail-section-title">{sec.title}</h2>}
+              {sec.body && <p class="detail-section-body">{sec.body}</p>}
+              <div class="detail-gallery">
+                {sec.images.map((image) => (
+                  <figure class="gallery-item">
+                    {image.type === "video" ? (
+                      <video src={image.src} controls muted playsinline preload="metadata" />
+                    ) : (
+                      <img src={image.src} alt={image.caption} loading="lazy" />
+                    )}
+                    <figcaption>{image.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          ))
+        ) : project.images && project.images.length > 0 ? (
           <div class="detail-gallery">
             {project.images.map((image) => (
               <figure class="gallery-item">
@@ -183,6 +202,25 @@ const paragraphs = Array.isArray(project.description)
   }
 
   /* ----- Image gallery ----- */
+  /* ----- Titled content section (heading + body + its own image grid) ----- */
+  .detail-section {
+    margin-block: 2.5rem;
+  }
+  .detail-section-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+  .detail-section-body {
+    font-size: 1.1rem;
+    max-width: 72ch;
+    margin-bottom: 1.5rem;
+  }
+  /* the section provides its own outer spacing, so reset the inner gallery */
+  .detail-section .detail-gallery {
+    margin-block: 0;
+  }
+
   .detail-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

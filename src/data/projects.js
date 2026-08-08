@@ -26,6 +26,9 @@
 //    images      - (optional) gallery: array of { src, caption } objects.
 //                  Add type: "video" to render an inline <video> player instead
 //                  of an image (src should point to an mp4).
+//    sections    - (optional) array of { title?, body?, images[] } blocks, each
+//                  rendered as an optional heading + body paragraph + its own
+//                  image grid. Takes precedence over `images` when present.
 // =====================================================================
 export const projects = [
   {
@@ -42,25 +45,55 @@ export const projects = [
     status:
       "In progress. Brushless motor running under field-oriented control on a development kit; custom inverter PCB and control firmware in active development.",
     tools: ["STM32", "Altium", "LTspice", "SolidWorks"],
-    images: [
+    sections: [
       {
-        type: "video",
-        src: "/projects/foc-motor-controller/motor-spin.mp4",
-        caption:
-          "First motor spin under field-oriented control on the ST development kit",
+        images: [
+          {
+            src: "/projects/foc-motor-controller/foc-block-diagram.png",
+            caption:
+              "System block diagram: microcontroller, gate driver, three-phase inverter, motor, and feedback",
+          },
+          {
+            src: "/projects/foc-motor-controller/foc-concept-sketch.png",
+            caption:
+              "Initial concept sketch of the reaction-wheel inverted pendulum",
+          },
+          {
+            src: "/projects/foc-motor-controller/foc-schematic-sketch.png",
+            caption: "Early power stage schematic from the design phase",
+          },
+        ],
       },
       {
-        src: "/projects/foc-motor-controller/foc-block-diagram.png",
-        caption:
-          "System block diagram: microcontroller, gate driver, three-phase inverter, motor, and feedback",
+        title: "Simulation",
+        body:
+          "Simulated one half-bridge of the inverter in LTspice before starting the PCB. Built the circuit from the hand-drawn schematic: two MOSFETs, PWM gate drives with 1µs dead-time at 20kHz, and an RL stand-in for the motor winding. Predicted the steady-state current by hand (duty-weighted average over winding resistance, 0.576A), ran the sim over five time constants, and measured ~0.57A. Then deliberately overlapped the gate signals to demonstrate shoot-through: predicted 343-430A from the FETs' on-resistance, measured ~315A sustained, with the switch node sitting at half rail confirming both FETs on and the load current untouched, which is why the fault is catastrophic and why dead-time exists. Bonus experiments: moved a 50nH parasitic inductance into the power loop to produce switching-node ringing, and back-solved the FET's effective output capacitance (~2.6nF) from the measured ring frequency.",
+        images: [
+          {
+            src: "/projects/foc-motor-controller/halfbridge-simulation-circuit.png",
+            caption:
+              "Half-bridge with dead-time-staggered PWM and RL motor model.",
+          },
+          {
+            src: "/projects/foc-motor-controller/halfbridge-5tau.png",
+            caption: "Predicted 0.576A steady state; measured ~0.57A over 5τ.",
+          },
+          {
+            src: "/projects/foc-motor-controller/halfbridge-shootthrough.png",
+            caption:
+              "1µs deliberate gate overlap: ~315A fault current, node at half rail, load unaffected.",
+          },
+        ],
       },
       {
-        src: "/projects/foc-motor-controller/foc-concept-sketch.png",
-        caption: "Initial concept sketch of the reaction-wheel inverted pendulum",
-      },
-      {
-        src: "/projects/foc-motor-controller/foc-schematic-sketch.png",
-        caption: "Early power stage schematic from the design phase",
+        images: [
+          {
+            type: "video",
+            src: "/projects/foc-motor-controller/motor-spin.mp4",
+            caption:
+              "First motor spin under field-oriented control on the ST development kit",
+          },
+        ],
       },
     ],
     description: [
