@@ -29,6 +29,9 @@
 //    sections    - (optional) array of { title?, body?, images[] } blocks, each
 //                  rendered as an optional heading + body paragraph + its own
 //                  image grid. Takes precedence over `images` when present.
+//                  Per-section flags: afterDescription (render below the
+//                  description prose instead of above), bodyBelow (put the body
+//                  paragraph under the images instead of above them).
 // =====================================================================
 export const projects = [
   {
@@ -66,8 +69,10 @@ export const projects = [
       },
       {
         title: "Simulation",
+        afterDescription: true,
+        bodyBelow: true,
         body:
-          "Simulated one half-bridge of the inverter in LTspice before starting the PCB. Built the circuit from the hand-drawn schematic: two MOSFETs, PWM gate drives with 1µs dead-time at 20kHz, and an RL stand-in for the motor winding. Predicted the steady-state current by hand (duty-weighted average over winding resistance, 0.576A), ran the sim over five time constants, and measured ~0.57A. Then deliberately overlapped the gate signals to demonstrate shoot-through: predicted 343-430A from the FETs' on-resistance, measured ~315A sustained, with the switch node sitting at half rail confirming both FETs on and the load current untouched, which is why the fault is catastrophic and why dead-time exists. Bonus experiments: moved a 50nH parasitic inductance into the power loop to produce switching-node ringing, and back-solved the FET's effective output capacitance (~2.6nF) from the measured ring frequency.",
+          "I simulated one half-bridge of the inverter in LTspice and built the circuit using two MOSFETs, PWM gate drives with 1µs dead time at a 20kHz frequency, and an RL circuit as a stand-in for the motor winding. I predicted the steady-state current by hand (by taking the duty-weighted average over winding resistance, yielding 0.576A), ran the simulation over five time constants, and measured a current of about 0.57A. Next, I deliberately overlapped the gate signals to demonstrate an example of shoot-through. I predicted a current of 343-430A from the FETs' on-resistance and measured a sustained current of about ~315A, with the switch node sitting at half rail, confirming that both FETs were on and the load current was unchanged, which is why the fault is so severe and why dead time is necessary. Among the additional experiments I performed was adding a 50nH parasitic inductance into the power loop to produce ringing at the switching node, and I also solved the FET's effective output capacitance (approximately 2.6nF) from the measured ring frequency.",
         images: [
           {
             src: "/projects/foc-motor-controller/halfbridge-simulation-circuit.png",

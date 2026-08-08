@@ -19,6 +19,12 @@ const { project } = Astro.props;
 const paragraphs = Array.isArray(project.description)
   ? project.description
   : [project.description];
+
+// Sections render around the description prose: those without `afterDescription`
+// go above it, those with it go below.
+const sections = project.sections ?? [];
+const sectionsBefore = sections.filter((s) => !s.afterDescription);
+const sectionsAfter = sections.filter((s) => s.afterDescription);
 ---
 
 <Base title={`${project.title} — Nick Carpenter`}>
@@ -75,11 +81,13 @@ const paragraphs = Array.isArray(project.description)
       </dl>
 
       {
-        project.sections && project.sections.length > 0 ? (
-          project.sections.map((sec) => (
+        sections.length > 0 ? (
+          sectionsBefore.map((sec) => (
             <div class="detail-section">
               {sec.title && <h2 class="detail-section-title">{sec.title}</h2>}
-              {sec.body && <p class="detail-section-body">{sec.body}</p>}
+              {sec.body && !sec.bodyBelow && (
+                <p class="detail-section-body">{sec.body}</p>
+              )}
               <div class="detail-gallery">
                 {sec.images.map((image) => (
                   <figure class="gallery-item">
@@ -92,6 +100,9 @@ const paragraphs = Array.isArray(project.description)
                   </figure>
                 ))}
               </div>
+              {sec.body && sec.bodyBelow && (
+                <p class="detail-section-body detail-section-body-below">{sec.body}</p>
+              )}
             </div>
           ))
         ) : project.images && project.images.length > 0 ? (
@@ -115,6 +126,32 @@ const paragraphs = Array.isArray(project.description)
       <div class="detail-body">
         {paragraphs.map((para) => <p>{para}</p>)}
       </div>
+
+      {
+        sectionsAfter.map((sec) => (
+          <div class="detail-section">
+            {sec.title && <h2 class="detail-section-title">{sec.title}</h2>}
+            {sec.body && !sec.bodyBelow && (
+              <p class="detail-section-body">{sec.body}</p>
+            )}
+            <div class="detail-gallery">
+              {sec.images.map((image) => (
+                <figure class="gallery-item">
+                  {image.type === "video" ? (
+                    <video src={image.src} controls muted playsinline preload="metadata" />
+                  ) : (
+                    <img src={image.src} alt={image.caption} loading="lazy" />
+                  )}
+                  <figcaption>{image.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+            {sec.body && sec.bodyBelow && (
+              <p class="detail-section-body detail-section-body-below">{sec.body}</p>
+            )}
+          </div>
+        ))
+      }
     </div>
   </section>
 </Base>
@@ -215,6 +252,11 @@ const paragraphs = Array.isArray(project.description)
     font-size: 1.1rem;
     max-width: 72ch;
     margin-bottom: 1.5rem;
+  }
+  /* when the body sits below the images, flip the spacing to the top */
+  .detail-section-body-below {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
   }
   /* the section provides its own outer spacing, so reset the inner gallery */
   .detail-section .detail-gallery {
