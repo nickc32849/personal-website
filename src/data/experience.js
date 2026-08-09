@@ -20,12 +20,13 @@ export const experiences = [
     dates: "Jun to Dec 2026",
     prose: [
       "CPI Electron Device Business builds RF and microwave parts for radar and defense systems. As an Electrical Engineering Co-op, I work across both production and design, spending time at the bench and using design tools during each stage of a board's life cycle.",
-      "Each day, I investigate failures, rework production boards alongside the assembly team, redesign schematics in OrCAD X Capture, and prepare design packages for vendors. So far, this co-op has taught me how RF and microwave hardware is built, tested, and shipped, and introduced me to concepts like transmission lines, VSWR, and receiver protectors.",
+      "Day to day, I work on the bench and in the design tools across the full life of a production board: investigating failures, reworking hardware with the assembly team, redesigning in OrCAD X, managing vendor communication for board layouts, and screening RF assemblies on a network analyzer. It has been a crash course in how RF and microwave hardware actually gets built, tested, and shipped in a production environment, and in concepts like transmission lines, S-parameters, and receiver protectors that I had never touched before this co-op.",
     ],
     bullets: [
       "Root-caused a component-fit failure on a production RF/microwave PCB by comparing datasheets, footprints, and electrical ratings of original and substitute ICs, isolating the fault to the board layout rather than the part.",
-      "Developed a manual rework procedure to recover 5 affected boards, iterating soldering instructions with assemblers and completing production documentation for release in an ITAR-regulated defense environment.",
-      "Produced a vendor-ready BOM and design package for PCB layout and scoped a test harness to electrically screen the redesigned board; designated to lead all active and upcoming vendor PCB designs through the calendar year.",
+      "Designed, built, and tested a validation harness for the redesigned PCB, tracing a test failure to an incorrectly documented ground pin in the legacy schematic; corrected the schematic and validated the board's truth table.",
+      "Manage vendor communication for all active and upcoming PCB layout designs, submitting ECRs and ECOs and deriving form-fit-function (FFF) part substitutes validated with program engineers.",
+      "Screened and documented waveguide assemblies for an RF limiter test kit using a network analyzer (PNA), capturing S-parameters, through-path loss, and coupling factor, and performing worst-case analysis in Excel against unit specifications.",
     ],
   },
   {
