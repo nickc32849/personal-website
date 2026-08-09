@@ -20,7 +20,7 @@ export const experiences = [
     dates: "Jun to Dec 2026",
     prose: [
       "CPI Electron Device Business builds RF and microwave parts for radar and defense systems. As an Electrical Engineering Co-op, I work across both production and design, spending time at the bench and using design tools during each stage of a board's life cycle.",
-      "Day to day, I work on the bench and in the design tools across the full life of a production board: investigating failures, reworking hardware with the assembly team, redesigning in OrCAD X, managing vendor communication for board layouts, and screening RF assemblies on a network analyzer. It has been a crash course in how RF and microwave hardware actually gets built, tested, and shipped in a production environment, and in concepts like transmission lines, S-parameters, and receiver protectors that I had never touched before this co-op.",
+      "Each day, I work on the bench and in the design tools across the full life of a production board: investigating failures, reworking hardware with the assembly team, redesigning in OrCAD X, managing vendor communication for board layouts, and screening RF assemblies on a network analyzer. It has been a crash course in how RF and microwave hardware actually gets built, tested, and shipped in a production environment, and in concepts like transmission lines, S-parameters, and receiver protectors that I had never touched before this co-op.",
     ],
     bullets: [
       "Root-caused a component-fit failure on a production RF/microwave PCB by comparing datasheets, footprints, and electrical ratings of original and substitute ICs, isolating the fault to the board layout rather than the part.",
