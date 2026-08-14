@@ -78,11 +78,13 @@ export const experiences = [
           text: "Students Bring Business Savvy to Holiday Pop-Up Shop",
           href: "https://vineyardgazette.com/news/2023/11/30/students-bring-business-savvy-holiday-pop-shop",
           source: "The Vineyard Gazette",
+          thumb: "/press/gazette-thumb.jpg",
         },
         {
           text: "The Vineyard Current segment on the Holiday Pop-Up Market",
           href: "https://soundcloud.com/mvyradio/the-vineyard-current-segment-from-december-3rd-2023-mvrhs-holiday-pop-up-market",
           source: "MVY Radio, Dec 2023",
+          thumb: "/press/mvy-thumb.png",
         },
       ],
     },
