@@ -20,12 +20,13 @@ export const experiences = [
     dates: "Jun to Dec 2026",
     prose: [
       "CPI Electron Device Business builds RF and microwave parts for radar and defense systems. As an Electrical Engineering Co-op, I work across both production and design, spending time at the bench and using design tools during each stage of a board's life cycle.",
-      "Each day, I work on the bench and in the design tools across the full life of a production board: investigating failures, reworking hardware with the assembly team, redesigning in OrCAD X, managing vendor communication for board layouts, and screening RF assemblies on a network analyzer. It has been a crash course in how RF and microwave hardware actually gets built, tested, and shipped in a production environment, and in concepts like transmission lines, S-parameters, and receiver protectors that I had never touched before this co-op.",
+      "Each day, I work on the bench and in design tools throughout the full life cycle of a production board: investigating failures, reworking hardware with the assembly team, redesigning in OrCAD X, managing vendor communication for board layouts, and screening with RF assemblies on a network analyzer. It has been a crash course in how RF and microwave hardware gets built, tested, and shipped in a production environment, and in concepts like transmission lines, S-parameters, and receiver protectors that I had never encountered before this co-op.",
     ],
     bullets: [
       "Root-caused a component-fit failure on a production RF/microwave PCB by comparing datasheets, footprints, and electrical ratings of original and substitute ICs, isolating the fault to the board layout rather than the part.",
       "Designed, built, and tested a validation harness for the redesigned PCB, tracing a test failure to an incorrectly documented ground pin in the legacy schematic; corrected the schematic and validated the board's truth table.",
-      "Manage vendor communication for all active and upcoming PCB layout designs, submitting ECRs and ECOs and deriving form-fit-function (FFF) part substitutes validated with program engineers.",
+      "Troubleshot a legacy-replacement board failing supply current validation, root-causing an overload to reversed-polarized components and tracing a supply current turn-on anomaly to inverted op-amp inputs.",
+      "Managing vendor communication for all active and upcoming PCB layout designs, submitting ECRs and ECOs and deriving form-fit-function (FFF) part substitutes validated with program engineers.",
       "Screened and documented waveguide assemblies for an RF limiter test kit using a network analyzer (PNA), capturing S-parameters, through-path loss, and coupling factor, and performing worst-case analysis in Excel against unit specifications.",
     ],
   },
