@@ -83,7 +83,7 @@ export const experiences = [
         {
           text: "The Vineyard Current segment on the Holiday Pop-Up Market",
           href: "https://soundcloud.com/mvyradio/the-vineyard-current-segment-from-december-3rd-2023-mvrhs-holiday-pop-up-market",
-          source: "MVY Radio, Dec 2023",
+          source: "MVYRADIO, Dec 2023",
           thumb: "/press/mvy-thumb.png",
         },
       ],
