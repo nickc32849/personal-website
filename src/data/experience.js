@@ -9,6 +9,8 @@
 //    dates        - any format you like, e.g. "Summer 2025" or "Jan to Jun 2025"
 //    prose        - (optional) array of paragraph strings shown above the
 //                   bullets (each string becomes its own paragraph)
+//    links        - (optional) { label, items:[{ text, href, source? }] }
+//                   external links shown after the bullets (open in a new tab)
 //    bullets      - a few short lines: what you did + the impact
 //                   (start each with an action verb: Built, Designed, Tested)
 // =====================================================================
@@ -62,11 +64,27 @@ export const experiences = [
     location: "Oak Bluffs, MA",
     dates: "Sep to Dec 2023",
     prose: [
-      "Before college, I started and managed my high school's holiday pop-up store. This was my first time recruiting a team and overseeing an entire operation from start to finish.",
+      "Before college, I organized and ran my high school's holiday pop-up store. It was my first experience putting together a team and managing every part of a project from beginning to end.",
+      "The idea for the store came from the business and marketing classes I took. It grew into a four-day retail operation, with products made by students, consignment deals with local island vendors, and a team of classmates volunteering to help. In addition to running the store, I led a group that presented our project to the Board of Education. This experience gave me my first real understanding of what it takes for a business to survive, since we had to cover all our costs before the store could reopen the following year.",
     ],
     bullets: [
       "Managed a 4-day holiday retail operation generating $11,000+ in sales, coordinating with 10 local vendors on consignment agreements and recruiting 30+ student volunteers.",
       "Negotiated vendor partnerships, developed a pricing strategy without historical sales data, and implemented POS systems, returning $1,000 in profit to school programs.",
     ],
+    links: {
+      label: "Read and hear more:",
+      items: [
+        {
+          text: "Students Bring Business Savvy to Holiday Pop-Up Shop",
+          href: "https://vineyardgazette.com/news/2023/11/30/students-bring-business-savvy-holiday-pop-shop",
+          source: "The Vineyard Gazette",
+        },
+        {
+          text: "The Vineyard Current segment on the Holiday Pop-Up Market",
+          href: "https://soundcloud.com/mvyradio/the-vineyard-current-segment-from-december-3rd-2023-mvrhs-holiday-pop-up-market",
+          source: "MVY Radio, Dec 2023",
+        },
+      ],
+    },
   },
 ];

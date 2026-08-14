@@ -52,6 +52,23 @@ const resumeFile = "/resume.pdf";
                   <li>{bullet}</li>
                 ))}
               </ul>
+              {exp.links && (
+                <div class="timeline-links">
+                  <span class="timeline-links-label">{exp.links.label}</span>
+                  <ul>
+                    {exp.links.items.map((link) => (
+                      <li>
+                        <a href={link.href} target="_blank" rel="noopener">
+                          {link.text}
+                        </a>
+                        {link.source && (
+                          <span class="timeline-links-source"> ({link.source})</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ))
         }
@@ -158,5 +175,33 @@ const resumeFile = "/resume.pdf";
   .timeline-bullets li {
     font-size: 1rem;
     line-height: 1.55;
+  }
+
+  /* ----- "Read and hear more" external links ----- */
+  .timeline-links {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+  .timeline-links-label {
+    font-weight: 500;
+  }
+  .timeline-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.35rem 0 0;
+    display: grid;
+    gap: 0.3rem;
+  }
+  .timeline-links a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .timeline-links a:hover {
+    color: var(--color-accent-dark);
+  }
+  .timeline-links-source {
+    color: var(--color-muted);
   }
 </style>
