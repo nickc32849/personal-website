@@ -1,27 +1,32 @@
 ---
 // THE EXPERIENCE PAGE — served at "/experience".
-// Leads with the embedded resume (PDF viewer + download button), then shows
-// the timeline of roles from src/data/experience.js.
+// Leads with the embedded resume (panel + download), then a numbered timeline
+// of roles from src/data/experience.js.
 
 import Base from "../layouts/Base.astro";
 import { experiences } from "../data/experience.js";
 
-// Your resume file. Put your PDF at public/resume.pdf (overwrite the
-// placeholder). To use a different name, drop it in /public and change this.
+// Your resume file. Put your PDF at public/resume.pdf and it flows through here.
 const resumeFile = "/resume.pdf";
 ---
 
 <Base title="Experience — Nick Carpenter">
-  <!-- ===== Resume (embedded viewer + download) ===== -->
+  <!-- ===== Resume panel ===== -->
   <section class="section">
     <div class="container">
-      <div class="resume-header">
-        <h1 class="page-title">Resume</h1>
-        <a class="btn btn-primary" href={resumeFile} download>Download PDF ↓</a>
-      </div>
+      <span class="kicker">01 // RESUME</span>
 
-      <div class="resume-viewer">
-        <iframe src={resumeFile} title="Nick Carpenter — Resume"></iframe>
+      <div class="resume-panel">
+        <div class="resume-panel-head">
+          <span class="resume-panel-label">Resume</span>
+          <a class="ghost-pill" href={resumeFile} download>Download PDF ↓</a>
+        </div>
+        <div class="resume-viewer">
+          <iframe
+            src={resumeFile}
+            title="Nick Carpenter — Resume"
+            loading="lazy"></iframe>
+        </div>
       </div>
       <p class="resume-fallback">
         Can't see the resume above?{" "}
@@ -33,14 +38,16 @@ const resumeFile = "/resume.pdf";
   <!-- ===== Experience timeline ===== -->
   <section class="section timeline-section">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <span class="kicker">02 // EXPERIENCE</span>
+      <h1 class="section-title">Experience</h1>
 
       <div class="timeline">
         {
-          experiences.map((exp) => (
+          experiences.map((exp, i) => (
             <div class="timeline-item">
+              <span class="timeline-index">{String(i + 1).padStart(2, "0")}</span>
               <p class="timeline-dates">{exp.dates}</p>
-              <h3 class="timeline-role">{exp.role}</h3>
+              <h2 class="timeline-role">{exp.role}</h2>
               <p class="timeline-org">
                 {exp.organization}
                 {exp.location && ` · ${exp.location}`}
@@ -91,27 +98,54 @@ const resumeFile = "/resume.pdf";
 </Base>
 
 <style>
-  .page-title {
+  .section-title {
     font-size: 2.25rem;
     letter-spacing: -0.02em;
+    color: var(--text-hi);
   }
 
-  /* ----- Resume ----- */
-  .resume-header {
+  /* ----- Resume panel ----- */
+  .resume-panel {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .resume-panel-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .resume-panel-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-lo);
+  }
+  .ghost-pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-mid);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .ghost-pill:hover {
+    border-color: var(--accent);
+    color: var(--text-hi);
   }
   .resume-viewer {
     width: 100%;
-    height: 85vh; /* tall enough to read a page; scrolls inside */
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--color-surface);
+    height: 82vh; /* tall enough to read a page; scrolls inside */
+    background: var(--surface-2);
   }
   .resume-viewer iframe {
     width: 100%;
@@ -121,21 +155,21 @@ const resumeFile = "/resume.pdf";
   }
   .resume-fallback {
     margin-top: 0.9rem;
-    font-size: 0.9rem;
-    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-lo);
   }
   .resume-fallback a {
-    color: var(--color-accent);
+    color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
-  /* ----- Timeline ----- */
-  .timeline-section {
-    border-top: 1px solid var(--color-border);
-  }
+  /* ----- Numbered timeline ----- */
   .timeline {
-    border-left: 2px solid var(--color-border);
+    border-left: 1px solid var(--border);
     margin-left: 0.5rem;
   }
   .timeline-item {
@@ -146,30 +180,43 @@ const resumeFile = "/resume.pdf";
   .timeline-item:last-child {
     padding-bottom: 0;
   }
+  /* accent-ringed dot on the rule */
   .timeline-item::before {
     content: "";
     position: absolute;
-    left: -8px;
-    top: 0.4rem;
-    width: 14px;
-    height: 14px;
+    left: -6px;
+    top: 0.35rem;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background: var(--color-accent);
-    border: 3px solid var(--color-bg);
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .timeline-index {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
   }
   .timeline-dates {
-    font-size: 0.85rem;
-    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
+    color: var(--text-lo);
   }
   .timeline-role {
+    font-family: var(--font-heading);
+    font-weight: 600;
     font-size: 1.2rem;
     letter-spacing: -0.01em;
-    margin-top: 0.15rem;
+    color: var(--text-hi);
+    margin-top: 0.2rem;
   }
   .timeline-org {
-    color: var(--color-accent);
+    color: var(--accent);
     font-size: 0.95rem;
     margin-top: 0.1rem;
   }
@@ -178,6 +225,7 @@ const resumeFile = "/resume.pdf";
     font-size: 1rem;
     line-height: 1.55;
     max-width: 72ch;
+    color: var(--text-mid);
   }
   .timeline-bullets {
     margin-top: 0.75rem;
@@ -188,19 +236,23 @@ const resumeFile = "/resume.pdf";
   .timeline-bullets li {
     font-size: 1rem;
     line-height: 1.55;
+    color: var(--text-mid);
   }
 
-  /* ----- "Read and hear more" link-preview cards ----- */
+  /* ----- "Read and hear more" press cards ----- */
   .timeline-links {
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    margin-top: 1.25rem;
   }
   .timeline-links-label {
-    font-weight: 500;
-    color: var(--color-muted);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-lo);
+    margin-bottom: 0.6rem;
   }
   .link-card-row {
-    margin-top: 0.6rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -211,39 +263,50 @@ const resumeFile = "/resume.pdf";
     align-items: center;
     gap: 0.8rem;
     padding: 0.7rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: #fff;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface-1);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .link-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+    border-color: rgba(46, 139, 255, 0.55);
+    box-shadow: 0 0 0 1px rgba(46, 139, 255, 0.25),
+      0 16px 40px rgba(0, 0, 0, 0.45);
   }
   .link-card-thumb {
     width: 56px;
     height: 56px;
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     object-fit: cover;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    /* logos monochrome by default; full color on hover */
+    filter: grayscale(1) contrast(1.05) brightness(0.95);
+    transition: filter 0.2s ease;
+  }
+  .link-card:hover .link-card-thumb {
+    filter: grayscale(0);
   }
   .link-card-text {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.2rem;
     min-width: 0;
   }
   .link-card-title {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--text-hi);
     line-height: 1.3;
   }
   .link-card-source {
-    font-size: 0.8rem;
-    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-lo);
   }
   @media (max-width: 640px) {
     .link-card-row {

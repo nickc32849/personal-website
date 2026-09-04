@@ -3,6 +3,14 @@
 // "prop" and links to that project's detail page. Written once here, reused
 // on both the Home page (featured) and the Projects page.
 const { project } = Astro.props;
+
+// Map the controlled stage value to its pill color class.
+const stageClass =
+  {
+    "In Progress": "is-progress",
+    Complete: "is-complete",
+    Concept: "is-concept",
+  }[project.stage] ?? "";
 ---
 
 <a class="project-card" href={`/projects/${project.slug}`}>
@@ -23,8 +31,8 @@ const { project } = Astro.props;
     }
   </div>
   <div class="project-body">
+    {project.stage && <span class={`status-badge ${stageClass}`}>{project.stage}</span>}
     <h3 class="project-title">{project.title}</h3>
-    {project.badge && <span class="status-badge">{project.badge}</span>}
     <p class="project-blurb">{project.blurb}</p>
     {
       project.tags && project.tags.length > 0 && (
@@ -39,60 +47,75 @@ const { project } = Astro.props;
 <style>
   .project-card {
     display: block;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-radius: 6px;
     overflow: hidden;
-    background: #fff;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: var(--surface-1);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(46, 139, 255, 0.55);
+    box-shadow: 0 0 0 1px rgba(46, 139, 255, 0.25),
+      0 16px 40px rgba(0, 0, 0, 0.45);
   }
   .project-thumb {
     aspect-ratio: 16 / 10;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
     display: grid;
     place-items: center;
-    color: var(--color-muted);
-    font-size: 0.9rem;
+    color: var(--text-lo);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     overflow: hidden;
   }
   .project-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* fill the card area, cropping to fit without distortion */
+    object-fit: cover; /* fill the card area, cropping without distortion */
   }
   .project-body {
     padding: 1.1rem 1.2rem 1.3rem;
   }
-  .project-title {
-    font-size: 1.1rem;
-    letter-spacing: -0.01em;
-  }
   .status-badge {
-    margin-top: 0.55rem;
+    margin-bottom: 0.7rem;
+  }
+  .project-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.25rem; /* 20px */
+    letter-spacing: -0.01em;
+    color: var(--text-hi);
   }
   .project-blurb {
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    margin-top: 0.3rem;
+    color: var(--text-mid);
+    font-size: 0.9375rem; /* 15px */
+    margin-top: 0.4rem;
   }
   .project-tags {
     list-style: none;
     padding: 0;
-    margin-top: 0.8rem;
+    margin-top: 0.9rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
   .project-tags li {
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    padding: 0.15rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.656rem; /* 10.5px */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-lo);
+    background: rgba(46, 139, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.22rem 0.5rem;
+    transition: border-color 0.2s ease;
+  }
+  .project-tags li:hover {
+    border-color: var(--accent);
   }
 </style>

@@ -43,9 +43,9 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(11, 14, 17, 0.85);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border);
   }
   .nav-inner {
     display: flex;
@@ -57,8 +57,10 @@ const currentPath = Astro.url.pathname;
     padding-inline: 1.5rem;
   }
   .nav-brand {
+    font-family: var(--font-heading);
     font-weight: 600;
     letter-spacing: -0.01em;
+    color: var(--text-hi);
   }
   .nav-links {
     display: flex;
@@ -67,18 +69,20 @@ const currentPath = Astro.url.pathname;
     padding: 0;
   }
   .nav-link {
-    color: var(--color-muted);
-    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem; /* 12px */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-lo);
     transition: color 0.15s ease;
   }
   .nav-link:hover {
-    color: var(--color-text);
+    color: var(--accent);
   }
-  /* The current page uses the accent color so it's distinct from a merely
-     hovered link (hover darkens to text color; active is accent). */
+  /* Current page sits at the high-contrast text level. */
   .nav-link[aria-current="page"] {
-    color: var(--color-accent);
-    font-weight: 600;
+    color: var(--text-hi);
+    font-weight: 500;
   }
 
   /* On narrow screens, let the links wrap neatly */

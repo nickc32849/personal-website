@@ -38,7 +38,7 @@ export const projects = [
     slug: "foc-motor-controller",
     thumbnail: "/projects/foc-motor-controller/thumb.jpg",
     title: "FOC Motor Controller and Reaction-Wheel Inverted Pendulum",
-    badge: "In Progress",
+    stage: "In Progress",
     blurb:
       "A self-directed build of a custom FOC brushless motor controller driving a self-balancing reaction-wheel inverted pendulum.",
     tags: ["Motor Control", "Power Electronics", "Embedded", "Controls", "PCB Layout"],
@@ -48,6 +48,25 @@ export const projects = [
     status:
       "In progress. Brushless motor running under field-oriented control on a development kit; custom inverter PCB and control firmware in active development.",
     tools: ["STM32", "Altium", "LTspice", "SolidWorks"],
+    // BUILD LOG — newest first. To add an entry, put a new object at the TOP:
+    //   { date: "Aug 1, 2026", text: "What happened in one line." }
+    log: [
+      {
+        date: "Jul 15, 2026",
+        text: "First motor spin under field-oriented control on the ST development kit",
+      },
+      {
+        date: "Jul 2026",
+        text: "Completed system block diagram, concept sketch, and first-principles power stage design",
+      },
+    ],
+    // KEY COMPONENTS (bill of materials) — { part, role }
+    components: [
+      { part: "STM32G431", role: "Control" },
+      { part: "MPQ6531 gate driver", role: "Gate drive" },
+      { part: "IPD090N03LG MOSFETs x6", role: "Power stage" },
+      { part: "AS5600 encoder", role: "Position feedback" },
+    ],
     sections: [
       {
         images: [
@@ -64,6 +83,12 @@ export const projects = [
           {
             src: "/projects/foc-motor-controller/foc-schematic-sketch.png",
             caption: "Early power stage schematic from the design phase",
+          },
+          {
+            type: "video",
+            src: "/projects/foc-motor-controller/motor-spin.mp4",
+            caption:
+              "First motor spin under field-oriented control on the ST development kit",
           },
         ],
       },
@@ -90,16 +115,6 @@ export const projects = [
           },
         ],
       },
-      {
-        images: [
-          {
-            type: "video",
-            src: "/projects/foc-motor-controller/motor-spin.mp4",
-            caption:
-              "First motor spin under field-oriented control on the ST development kit",
-          },
-        ],
-      },
     ],
     description: [
       "I am building my own field-oriented control (FOC) brushless motor controller for a reaction-wheel inverted pendulum. The robot will stay balanced by spinning a flywheel to create torque. My goal is to design and build every part myself, including the power electronics, PCB, control firmware, and mechanical parts.",
@@ -109,6 +124,7 @@ export const projects = [
   },
   {
     slug: "dc-power-analyzer",
+    stage: "Complete",
     thumbnail: "/projects/dc-power-analyzer/thumb.jpg",
     title: "DC Power Analyzer",
     blurb:
@@ -151,6 +167,7 @@ export const projects = [
   },
   {
     slug: "boxy",
+    stage: "Complete",
     thumbnail: "/projects/boxy/thumb.jpg",
     title: "Boxy",
     blurb:
@@ -187,6 +204,7 @@ export const projects = [
   },
   {
     slug: "ir-sensor-puzzle-controller",
+    stage: "Complete",
     thumbnail: "/projects/ir-sensor-puzzle-controller/thumb.jpg",
     title: "IR-Sensor Puzzle Controller",
     blurb:
@@ -226,6 +244,7 @@ export const projects = [
   },
   {
     slug: "whack-a-mole",
+    stage: "Complete",
     thumbnail: "/projects/whack-a-mole/thumb.jpg",
     title: "Whack-a-Mole Electromechanical Game",
     blurb:
@@ -257,6 +276,7 @@ export const projects = [
   },
   {
     slug: "sustainafill",
+    stage: "Complete",
     thumbnail: "/projects/sustainafill/thumb.jpg",
     title: "SustainaFill",
     blurb:

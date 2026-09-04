@@ -1,29 +1,58 @@
 /* =====================================================================
    GLOBAL STYLES
-   This file loads on every page. The :root block at the top holds the
-   site's "design tokens" — change a value here and it updates everywhere.
+   Dark "Instrument" design system — precision test-equipment aesthetic.
+   Space Grotesk headings, Inter body, IBM Plex Mono labels, one blue accent,
+   amber reserved for the In Progress badge, faint blueprint grid.
+   The :root block holds all design tokens; change a value here to cascade
+   it everywhere.
    ===================================================================== */
 
 :root {
-  /* Colors — clean & minimal: white bg, near-black text, one blue accent */
-  --color-bg: #ffffff;
-  --color-text: #18181b;
-  --color-muted: #6b7280;
-  --color-accent: #2563eb;
-  --color-accent-dark: #1d4ed8;
-  --color-border: #e5e7eb;
-  --color-surface: #f9fafb;
+  /* ----- Instrument color system (canonical) ----- */
+  --bg: #0b0e11; /* page background */
+  --surface-1: #12161b; /* cards, panels */
+  --surface-2: #1a1f26; /* raised / hover surfaces, metadata strips */
+  --border: #262b33; /* hairlines, card borders, dividers */
+  --text-hi: #f2f5f8; /* headings, primary text (never pure white) */
+  --text-mid: #aeb6c0; /* body text */
+  --text-lo: #7c8794; /* captions, labels, metadata (nudged from #727C88 to meet AA on panels) */
+  --accent: #2e8bff; /* the only accent: links, hover, focus, active nav */
+  --accent-press: #1e6fe0; /* hover / pressed accent */
+  --status-progress: #f5b23d; /* amber — reserved for the In Progress badge */
+  --accent-subtle: rgba(46, 139, 255, 0.12); /* subtle accent tint (tag bg) */
 
-  /* Typography */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  /* ----- Aliases so existing rules resolve to the new dark scale ----- */
+  --text: var(--text-hi);
+  --muted: var(--text-mid);
+  --surface: var(--surface-1);
+  --accent-dark: var(--accent-press);
+  --color-bg: var(--bg);
+  --color-text: var(--text-hi);
+  --color-muted: var(--text-mid);
+  --color-border: var(--border);
+  --color-surface: var(--surface-1);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-press);
 
-  /* Layout */
-  --radius: 12px;
+  /* ----- Typography (unchanged) ----- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-heading: "Space Grotesk", var(--font-sans);
+  --font-body: "Inter", var(--font-sans);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ----- Layout ----- */
+  --radius: 10px;
   --max-width: 1080px;
+
+  /* ----- Faint engineering grid (near-subliminal, dark) ----- */
+  --grid-line: rgba(242, 245, 248, 0.035);
+  --grid-bg: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  --grid-size: 32px;
 }
 
-/* ----- Minimal reset: sensible defaults across browsers ----- */
+/* ----- Minimal reset ----- */
 *,
 *::before,
 *::after {
@@ -34,13 +63,23 @@
 }
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
+  color-scheme: dark; /* native controls, scrollbars follow the dark theme */
 }
 body {
-  font-family: var(--font-sans);
-  color: var(--color-text);
-  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem; /* 17px */
+  color: var(--text-mid); /* body text */
+  background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+/* Headings sit at the high-contrast text level. */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-hi);
 }
 img {
   max-width: 100%;
@@ -51,16 +90,65 @@ a {
   text-decoration: none;
 }
 
-/* ----- Layout helpers (reused on every page) ----- */
+/* Headings use the display face. Sizes/weights stay in each component. */
+h1,
+h2,
+h3,
+h4,
+.section-title,
+.page-title {
+  font-family: var(--font-heading);
+}
+h1 {
+  letter-spacing: -0.02em;
+}
+
+/* ----- Shared monospace label treatment (the signature move) ----- */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; /* 12px */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Section kicker: mono label in the accent color, e.g. "// FEATURED PROJECTS" */
+.kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+/* ----- Layout helpers ----- */
 .container {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
+
+/* Major section wrappers: consistent rhythm + faint blueprint grid. */
 .section {
-  padding-block: 5rem;
+  padding-block: 6rem; /* 96px desktop */
+  background-image: var(--grid-bg);
+  background-size: var(--grid-size) var(--grid-size);
 }
+/* Hairline divider between consecutive major sections. */
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .section {
+    padding-block: 3.5rem; /* 56px mobile */
+  }
+}
+
 .section-title {
   font-size: 1.75rem;
   letter-spacing: -0.02em;
@@ -71,50 +159,146 @@ a {
 .btn {
   display: inline-block;
   padding: 0.7rem 1.4rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--surface-1);
+  color: var(--text-mid);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.95rem;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 .btn:hover {
-  border-color: var(--color-text);
+  border-color: var(--accent);
+  color: var(--text-hi);
 }
 .btn-primary {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
 }
 .btn-primary:hover {
-  background: var(--color-accent-dark);
-  border-color: var(--color-accent-dark);
+  background: var(--accent-press);
+  border-color: var(--accent-press);
+  color: var(--bg);
 }
 
-/* ----- Status badge (e.g. "In Progress") — distinct from topic tags ----- */
+/* ----- Status pill (project stage): Complete / In Progress / Concept -----
+   One pill, three states. Amber (--status-progress) is reserved for In Progress. */
 .status-badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
   font-weight: 500;
-  color: #fff;
-  background: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.2rem 0.7rem;
-  letter-spacing: 0.01em;
+  padding: 0.28rem 0.65rem;
+}
+.status-badge.is-progress {
+  color: var(--status-progress);
+  background: rgba(245, 178, 61, 0.1);
+  border-color: rgba(245, 178, 61, 0.35);
+}
+.status-badge.is-complete {
+  color: var(--accent);
+  background: rgba(46, 139, 255, 0.1);
+  border-color: rgba(46, 139, 255, 0.35);
+}
+.status-badge.is-concept {
+  color: var(--text-lo);
+  background: rgba(114, 124, 136, 0.1);
+  border-color: var(--border);
+}
+/* Status value coloring inside the metadata strip (text only, no pill) */
+.status-value.is-progress {
+  color: var(--status-progress);
+}
+.status-value.is-complete {
+  color: var(--accent);
+}
+.status-value.is-concept {
+  color: var(--text-lo);
 }
 
-/* ----- Footer ----- */
+/* ----- Footer (mono, muted; not uppercased so the email stays readable) ----- */
 .site-footer {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
   padding-block: 2rem;
-  color: var(--color-muted);
-  font-size: 0.9rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
 }
 .site-footer a {
-  color: var(--color-muted);
+  color: var(--muted);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .site-footer a:hover {
-  color: var(--color-text);
+  color: var(--text);
+}
+
+/* =====================================================================
+   Sitewide image treatment — "instrument" look on every photo.
+   Desaturated + framed. Applied to project galleries, card thumbnails,
+   and the About portrait. (SVGs like the favicon/oscilloscope are exempt.)
+   ===================================================================== */
+.about-photo,
+.project-thumb img,
+.gallery-item img,
+.link-card-thumb {
+  filter: grayscale(0.35) contrast(1.05) brightness(0.95);
+}
+/* Standalone framed photos get a hairline + soft radius. Card thumbnails get
+   their bottom hairline from the .project-thumb container instead, so they are
+   excluded here to avoid a double frame. */
+.about-photo,
+.gallery-item img {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Photo captions: mono, small, low-contrast, uppercase. */
+.gallery-item figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-lo);
+}
+
+/* ----- Focus ring: visible 2px accent outline on keyboard focus ----- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ----- Scroll reveal: sections fade up 12px on first entry.
+   Only active when JS adds .reveal-ready to <html>; that class is NOT added
+   under prefers-reduced-motion or when JS is off, so content is always
+   visible without motion. IntersectionObserver adds .revealed once. ----- */
+.reveal-ready .section {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal-ready .section.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ----- Accessibility: honor reduced-motion by disabling transitions ----- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

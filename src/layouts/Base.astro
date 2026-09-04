@@ -18,7 +18,25 @@ const { title = "Nick Carpenter" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts: Space Grotesk (headings), Inter (body), IBM Plex Mono (labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>{title}</title>
+
+    <!-- Enable scroll-reveal only when motion is allowed (set before paint to
+         avoid a flash). If JS is off or reduced-motion is on, sections stay
+         visible with no hidden state. -->
+    <script is:inline>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("reveal-ready");
+      }
+    </script>
   </head>
   <body>
     <Nav />
@@ -41,5 +59,26 @@ const { title = "Nick Carpenter" } = Astro.props;
         </p>
       </div>
     </footer>
+
+    <!-- One-time scroll reveal via IntersectionObserver. -->
+    <script is:inline>
+      (function () {
+        if (!document.documentElement.classList.contains("reveal-ready")) return;
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+        );
+        document.querySelectorAll(".section").forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -45,6 +45,7 @@ const involvement = [
       <img class="about-photo" src={portraitImage} alt="Nick Carpenter" />
 
       <div class="about-text">
+        <span class="kicker">01 // ABOUT</span>
         <h1 class="page-title">About</h1>
 
         <p>
@@ -131,7 +132,7 @@ const involvement = [
   }
   .about-photo {
     width: 100%;
-    border-radius: var(--radius);
+    border-radius: 4px;
     aspect-ratio: 4 / 5;
     object-fit: cover;
   }
@@ -177,62 +178,37 @@ const involvement = [
     }
   }
 
-  /* ----- Skills ----- */
-  .skills-section {
-    border-top: 1px solid var(--color-border);
-  }
-  .skills-grid {
+  /* ----- Skills + Honors: instrument spec panels ----- */
+  .skills-grid,
+  .honors-grid {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.75rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
   }
-  .skill-group-name {
-    font-size: 1rem;
-    margin-bottom: 0.9rem;
-  }
-  .skill-pills {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .skill-pills li {
-    font-size: 0.85rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    padding: 0.3rem 0.8rem;
-  }
-
-  /* ----- Honors & Involvement ----- */
-  .honors-section {
-    border-top: 1px solid var(--color-border);
-  }
-  .honors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2.5rem;
-  }
+  .skill-group-name,
   .honors-group-name {
-    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.656rem; /* 10.5px */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-lo);
     margin-bottom: 0.9rem;
   }
+  .skill-pills,
   .honors-list {
     list-style: none;
     padding: 0;
     display: grid;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
+  .skill-pills li,
   .honors-list li {
-    position: relative;
-    padding-left: 1.25rem;
-    font-size: 1.05rem;
-  }
-  .honors-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
+    font-size: 0.90625rem; /* 14.5px */
+    color: var(--text-hi);
+    line-height: 1.45;
   }
 </style>
