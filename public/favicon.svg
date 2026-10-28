@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2563eb" />
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#12161B" stroke="#262B33" stroke-width="2" />
   <path
     d="M 19 45 L 19 19 L 45 45 L 45 19"
     fill="none"
-    stroke="#ffffff"
+    stroke="#2E8BFF"
     stroke-width="7.5"
     stroke-linecap="round"
     stroke-linejoin="round"
