@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect x="1" y="1" width="62" height="62" rx="14" fill="#12161B" stroke="#262B33" stroke-width="2" />
-  <!-- right vertical of the N -->
-  <rect x="42" y="14" width="9" height="36" fill="#2E8BFF" />
-  <!-- diagonal of the N -->
-  <path d="M 24 15 L 47 49" fill="none" stroke="#2E8BFF" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" />
-  <!-- left leg as a lightning bolt, spiking below the baseline -->
-  <path d="M 18 14 L 27 14 L 21 30 L 29 30 L 14 57 L 19 35 L 12 35 Z" fill="#7FB4FF" />
-</svg>
